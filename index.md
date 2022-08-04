@@ -1,4 +1,14 @@
-## Welcome to GitHub Pages
+# Yi Zhang
+
+## Abot Me
+Hi! I’m a PhD student in Psychology at USC. I work with Leor Hackel. I'm broadly interested in the nature of emotion, morality, and how they shape how we interact with other humans.
+
+Before graduate school, I received my B.A. in Psychology and Philosophy from NYU where I worked in Jay Van Bavel and Jon Freeman's labs . Then, I worked as a lab manager at Columbia in Kevin Ochsner’s lab.
+
+Besides research, I am into reading and a variety of sports, particularly tennis, running, and skiing.
+
+## Research
+I am working on three lines of research.
 
 You can use the [editor on GitHub](https://github.com/yizhang96/yizhang96.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
 
