@@ -1,1 +1,27 @@
-theme: jekyll-theme-minimal
+# Dependencies
+gems:             [jekyll-paginate, jekyll-gist]
+markdown:         kramdown
+highlighter:      Rouge
+
+# Permalinks
+permalink:        pretty
+#relative_permalinks: true  this needs to be removed; otherwise won't compile
+
+# Setup
+title:            Yi Zhang
+tagline:          ''
+description:      'I am a psychology researcher interested in emotion, morality, and social cognition.'
+url:              /
+baseurl:          /
+
+author:
+  name:           'Yi Zhang'
+  url:            https://twitter.com/yiyiyi96
+
+paginate:         5
+
+# Custom vars
+version:          2.1.0
+
+github:
+  repo:           https://github.com/poole/hyde
