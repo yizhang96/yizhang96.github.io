@@ -32,7 +32,7 @@
  */
 
 html {
-  font-family: "Helvetica", Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 @media (min-width: 48em) {
   html {
@@ -79,8 +79,30 @@ html {
 .sidebar-about h1 {
   color: #fff;
   margin-top: 0;
-  font-family: "Helvetica", serif;
+  font-family: "Abril Fatface", serif;
   font-size: 3.25rem;
+}
+
+/*added*/
+.sidebar-about h1 {
+  color: #fff;
+  margin-top: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 2rem;
+}
+
+.sidebar-about p {
+  color: #fff;
+  margin-top: 0;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+}
+
+/* font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; */
+
+.myimg{
+  object-fit:cover;
+  border-radius:50%;
 }
 
 /* Sidebar nav */
