@@ -1,15 +1,30 @@
 ---
 layout: page
-title: About me
+title: About
 ---
 
+<p class="message">
+  Hey there! This page is included as an example. Feel free to customize it for your own use upon downloading. Carry on!
+</p>
 
-  Hi! I’m a PhD student in Psychology at USC. I work with [Leor Hackel](https://www.hackellab.org). I’m broadly interested in the nature of emotion, morality, and how they shape how we interact with other humans.
+In the novel, *The Strange Case of Dr. Jeykll and Mr. Hyde*, Mr. Poole is Dr. Jekyll's virtuous and loyal butler. Similarly, Poole is an upstanding and effective butler that helps you build Jekyll themes. It's made by [@mdo](https://twitter.com/mdo).
 
-  Before graduate school, I received my B.A. in Psychology and Philosophy from NYU where I worked in Jay Van Bavel and Jon Freeman’s labs . Then, I worked as a lab manager at Columbia in Kevin Ochsner’s lab.
+There are currently two themes built on Poole:
 
-  Besides research, I am into reading and a variety of sports, particularly tennis, running, and skiing.
+* [Hyde](http://hyde.getpoole.com)
+* [Lanyon](http://lanyon.getpoole.com)
 
-### You can find my [CV](https://docs.google.com/document/d/1XP_QLVkvfCztDK0Wz4YhzpkHHbf4pnqv/edit?usp=sharing&ouid=111557242873251635534&rtpof=true&sd=true) and [resume] here.
-### Feel free to reach out. My email is [yzhang51@usc.edu](yzhang51@usc.edu)
+Learn more and contribute on [GitHub](https://github.com/poole).
 
+## Setup
+
+Some fun facts about the setup of this project include:
+
+* Built for [Jekyll](http://jekyllrb.com)
+* Developed on GitHub and hosted for free on [GitHub Pages](https://pages.github.com)
+* Coded with [Sublime Text 2](http://sublimetext.com), an amazing code editor
+* Designed and developed while listening to music like [Blood Bros Trilogy](https://soundcloud.com/maddecent/sets/blood-bros-series)
+
+Have questions or suggestions? Feel free to [open an issue on GitHub](https://github.com/poole/issues/new) or [ask me on Twitter](https://twitter.com/mdo).
+
+Thanks for reading!
