@@ -121,6 +121,36 @@ a.sidebar-nav-item:focus {
   font-weight: bold;
 }
 
+/* Adding style for social media icon (NEWLY ADDED)
+/* Style all font awesome icons */
+.fa {
+  padding: 10px;
+  font-size: 10px;
+  width: 40px;
+  text-align: center;
+  text-decoration: none;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+.fa-linkedin {
+  background: #0072b1;
+  color: white;
+}
+.fa-github {
+  background: #211F1F;
+  color: white;
+}
+.fa-send {
+  background: #D44638;
+  color: white;
+}
+
+
 /* Sticky sidebar
  *
  * Add the `sidebar-sticky` class to the sidebar's container to affix it the

@@ -3,7 +3,7 @@
     <div class="sidebar-about">
       <img src="/tennis.jpg" style="width: 80%; display:block; margin-left: auto; margin-right: auto;", class="myimg"></img>
       <h1>
-        <a href="{{ '/' | relative_url }}">
+        <a href="{{ '/about' | relative_url }}">
           {{ site.title }}
         </a>
       </h1>
@@ -27,6 +27,19 @@
       {% endfor %}
 
       <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ '/' | relative_url }}">Blog</a>
+      <h1>
+
+      </h1>
+      <!--Adding social media icons-->
+      <!-- Add icon library -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!-- Add font awesome icons -->
+      <a href="https://twitter.com/yiyiyi96" class="fa fa-twitter" target="_blank"></a>
+      <a href="https://www.linkedin.com/in/yi-zhang-93aa83a1" class="fa fa-linkedin" target="_blank"></a>
+      <a href="mailto:yzhang51@usc.edu" class="fa fa-send" target="_blank"></a>
+      <h1></h1>
+      
+
     </nav>
 
     <p>&copy; {{ site.time | date: '%Y' }}. Theme based on Hyde</p>
