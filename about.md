@@ -9,6 +9,6 @@ title: About me
 
   Besides research, I am also passionate about science communication. Since 2021, I have been writing and translating articles for [Neureality (神经现实)](https://neu-reality.com), a leading non-profit science communication platform in China.
 
-### You can find my [CV](https://docs.google.com/document/d/1XP_QLVkvfCztDK0Wz4YhzpkHHbf4pnqv/edit?usp=sharing&ouid=111557242873251635534&rtpof=true&sd=true) and [resume] here.
-### Feel free to reach out. My email is [yzhang51@usc.edu](yzhang51@usc.edu)
+### You can find my [CV](/Yi%20Zhang_CV.pdf) and [resume](/Yi_Zhang_Resume.pdf) here.
+### Feel free to reach out. My email is [yzhang51@usc.edu](mailto:yzhang51@usc.edu)
 
