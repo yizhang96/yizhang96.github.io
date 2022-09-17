@@ -3,7 +3,7 @@ layout: page
 title: About me
 ---
 
-  Hi! I’m a PhD student in Psychology at USC. I work with [Leor Hackel](https://www.hackellab.org). I’m broadly interested in the nature of emotion, morality, and how they shape how we interact with other humans. My research uses a multi-method approach, using tools such as qualitative survey, psychophysiological task, and social network analysis.
+  Hi! I’m a PhD student in Psychology at USC. I work with [Leor Hackel](https://www.hackellab.org). I’m broadly interested in the nature of emotion, morality, and how they shape how we interact with other humans. My research uses a multi-method approach, using tools such as quantitative survey, psychophysiological task, and social network analysis.
 
   Before graduate school, I received my B.A. in Psychology and Philosophy from NYU where I worked in Jay Van Bavel and Jon Freeman’s labs . Then, I worked as a lab manager at Columbia in Kevin Ochsner’s lab.
 
