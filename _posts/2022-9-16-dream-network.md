@@ -121,7 +121,9 @@ for dream_name_list in dream_name_list_all:
 ### 4. Plot social network graph
 We can use the `networkX` and `matplotlib` packages to plot dream social network by converting the adjacency matrix into a graph. 
 
-First, let's visualize how many times each character has occured across all dreams, that is, the distribution of the *degree centrality* of each node. Degree centrality appears to follow a power-law distribution, as in many real-life social networks.
+First, let's visualize how many times each character has occured across all dreams, that is, the distribution of the *degree centrality* of each node. As the first figure shows, degree centrality appears to follow a power-law distribution, as in many real-life social networks. 
+
+The second figure shows the degree centrality of the 15 most "popular" characters. Take a guess at who they are--yes, they are among my closest friends and people I know from work.
 
 ```python 
 #create and plot graph using neworkX
@@ -142,21 +144,37 @@ plt.bar(list(keys)[0:14], list(values)[0:14], color = get_color_gradient(color1,
 plt.xticks(rotation = "vertical", size = 7)
 plt.title("Degree centrality of first 15 characters in dreams")
 plt.show()
+
+#plot histogram for degree distribution
+plt.hist(list(values), color="#F3A0F2",  bins=20)
+plt.title("Distribution of degree centrality across all characters")
+plt.show()
 ```
 
-<img tyle="float: left;" src="dream_output2.png" alt="" width="900"/>
+<p float="left">
+  <img tyle="float: left;" src="dream_output2.5.png" alt="" width="900"/>
+  <img tyle="float: left;" src="dream_output2.png" alt="" width="900"/>
+</p>
 
-Next, let's visualize the network graph. Here, I set the size and color of each node to scale with degree centrality.
+Next, let's visualize the network graph. Here, I set the size of each node to scale with degree centrality. The node names are not shown here for privacy.
 
 ```python
 #show network plot
 #set node size by degree centrality
-nx.draw(nxgraph, with_labels=True, 
-    node_size=[math.sqrt(v+1) * 500 for v in d.values()])
+pos = nx.spring_layout(nxgraph, scale=20, k=3/np.sqrt(nxgraph.order()))
+nx.draw(nxgraph, pos, with_labels=False, 
+    node_size=[math.sqrt(v+1) * 80 for v in d.values()],
+    node_color = "#6dc9c0",
+    edge_color = "#c5c7c5")
+#set node color by centrality
 plt.show()
 ```
 
-Using `networkX`, we can also calculate the dream network's metrics, including density, transitivity, and assortativity.
+<p float="left">
+  <img tyle="float: left;" src="dream_output_network1.png" alt="" width="800"/>
+</p>
+
+It is clear that the graph has one large component and several smaller ones and is similar to real-life social networks. To more quantitatively examine the nature of the network, we can use the `networkX` package to calculate network metrics, including density, transitivity, and assortativity.
 
 ```python
 #calculate and print network metrics:
@@ -181,7 +199,11 @@ Below are some resources I found useful while exploring my dream data:
 <a href="https://www.dreambank.net">Dreambank</a> is a database for over 20,000 dream reports. Researchers have used it to answer many interesting questions about dreams, cognition, and consciousness, such as shifts in dream content across age and the structures of dream vs. real-life social networks (<a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/cogs.12244">Han et al., 2016</a>).
 
 ### Natural language processing
+Using the `nltk` package to extract information from natural languages. <a href = "    - https://unbiased-coder.com/extract-names-python-nltk/">Link</a>
 
+Sentiment analysis in python. <a href = "https://towardsdatascience.com/a-beginners-guide-to-sentiment-analysis-in-python-95e354ea84f6"> Link </a>
+
+`DeepL` is a useful translator I used to translate my dreams from Chinese to English. <a href = "https://www.deepl.com/translator"> Link </a>
 
 
 -----
