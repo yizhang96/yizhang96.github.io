@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A social network of dreams
+title: A social network analysis of dreams
 ---
 
 ## Table of Contents
