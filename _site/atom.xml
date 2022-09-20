@@ -4,7 +4,7 @@
  <title>Yi Zhang</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2022-08-08T03:08:25-04:00</updated>
+ <updated>2022-09-19T18:31:33-07:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Yi Zhang</name>
@@ -13,9 +13,219 @@
 
  
  <entry>
+   <title>A social network analysis of dreams</title>
+   <link href="http://localhost:4000/2022/09/16/dream-network/"/>
+   <updated>2022-09-16T00:00:00-07:00</updated>
+   <id>http://localhost:4000/2022/09/16/dream-network</id>
+   <content type="html">&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#data-summary-and-workflow&quot;&gt;Data summary and workflow&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#social-network-analysis-of-dreams&quot;&gt;Social network analysis of dreams&lt;/a&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-preparation&quot;&gt;Preparation&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-extracting-names-from-dream-corpus&quot;&gt;Extracting names from dream corpus&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-creating-social-network-ties&quot;&gt;Creating social network ties&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#4-plot-social-network-graph&quot;&gt;Plot social network graph&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#resources&quot;&gt;Resources&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The interpretation of dreams is the royal road to a knowledge of the unconscious activities of the mind.
+–Sigmund Freud&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;One fun fact about me is that I always remember my dreams when I wake up. Since 2019, I have been keeping a dream journal, writing down the narratives that took place during my sleep before they escaped from memory. Though by no means comprehensive, this dream journal will offer some interesting insight into my unconscious and my real life.&lt;/p&gt;
+
+&lt;p&gt;Unlike the Freudian approach, I aim to understand my dreams in a quantitative way, using data analytic tools I learned through research over the past few years, including natural language processing, social network analysis, and data visualization.&lt;/p&gt;
+
+&lt;p&gt;Feel free to check the &lt;a href=&quot;https://github.com/yizhang96/dream-network&quot;&gt;Github repository&lt;/a&gt; of this project for more information.&lt;/p&gt;
+
+&lt;h2 id=&quot;data-summary-and-workflow&quot;&gt;Data summary and workflow&lt;/h2&gt;
+
+&lt;p&gt;The dream corpus used for this demonstration contains 100 dream entries entered between January and June 2019. Below is a glance at the file:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;dream_example.png&quot; alt=&quot;dream-example&quot; title=&quot;examples from dream corpus&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, each dream narrative contains names, locations, and emotional states. In this demonstration, I will first create a social network for the character names in my dreams. Then, I will use sentiment analysis to explore how my emotional states in dreams have flucuated across time.&lt;/p&gt;
+
+&lt;h2 id=&quot;social-network-analysis-of-dreams&quot;&gt;Social network analysis of dreams&lt;/h2&gt;
+
+&lt;h3 id=&quot;1-preparation&quot;&gt;1. Preparation&lt;/h3&gt;
+&lt;p&gt;We will pre-process the dreams using the &lt;code&gt;nltk&lt;/code&gt; package. The codes below are adapted from this amazing &lt;a href=&quot;https://unbiased-coder.com/extract-names-python-nltk/&quot;&gt;tutorial&lt;/a&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;# import packages
+from tkinter import N
+import nltk #for extracting names from documents
+from nltk import ne_chunk, pos_tag, word_tokenize
+from nltk.tree import Tree
+import numpy as np
+import math
+import itertools
+import networkx as nx #for social network analysis
+import matplotlib.pyplot as plt #for plotting graph
+import collections
+import csv #for reading corpus
+
+#reading dream corpus
+with open(filename, &apos;r&apos;) as csvfile:
+    # creating a csv reader object
+    csvreader = csv.reader(csvfile)
+    # extracting field names through first row
+    fields = next(csvreader)
+    # extracting each data row one by one
+    for row in csvreader:
+        dreams.append(row)
+    # get total number of rows
+    print(&quot;Total no. of rows: %d&quot;%(csvreader.line_num))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;2-extracting-names-from-dream-corpus&quot;&gt;2. Extracting names from dream corpus&lt;/h3&gt;
+&lt;p&gt;Next, we extract all character names that appeared in the dream corpus and create an adjacency matrix for all possible combinations of names.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;#extract names
+#create empty list holding names
+name_list = list()
+dream_name_list_all = list()
+
+# Extract 
+for dream in dreams:
+    # parsing each dream document
+    nltk_results = ne_chunk(pos_tag(word_tokenize(dream[0])))
+    dream_name_list = []
+    #for each dream in the corpus,
+    #create list containing all names in that dream
+    for nltk_result in nltk_results:
+        if type(nltk_result) == Tree:
+            name = &apos;&apos;
+            for nltk_result_leaf in nltk_result.leaves():
+                name += nltk_result_leaf[0] + &apos; &apos;
+            #print the content of each dream
+            print (&apos;Type: &apos;, nltk_result.label(), &apos;Name: &apos;, name)
+            #add character names to the list of all names
+            if nltk_result.label() == &apos;PERSON&apos;:
+                if name not in dream_name_list:
+                    dream_name_list.append(name)
+                if name not in name_list:
+                    name_list.append(name)
+    #add list of names in each dream
+    # to the list of names across all dreams
+    dream_name_list_all.append(dream_name_list)
+
+#create matrix for all name pairs
+graph = np.zeros((len(name_list), len(name_list)))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Now, we should have an adjacency matrix called &lt;code&gt;graph&lt;/code&gt; containing all possible combinations of names. The matrix consists of all 0s&lt;/p&gt;
+
+&lt;p&gt;Note that we can also examine the extracted names of &lt;code&gt;nltk&lt;/code&gt; using &lt;code&gt;.label()&lt;/code&gt;. &lt;code&gt;nltk&lt;/code&gt; can distinguish between person names (“PERSON”) and geo-political entities (“GPE”) like city names. Below are the extractions from two dreams:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;dream_output1.png&quot; alt=&quot;&quot; width=&quot;400&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;3-creating-social-network-ties&quot;&gt;3. Creating social network ties&lt;/h3&gt;
+&lt;p&gt;We will now update the values in the adjacency matrix by going through each dream document in the corpus to determine how many times each pair of names have co-occurred. Two people that appeared in the same dream are considered “connected” in the dream social network. The more two people have co-occurred, the higher their corresponding value in the matrix.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;#for each dream&apos;s name list, code each pair
+for dream_name_list in dream_name_list_all:
+    for name_pair in itertools.combinations(dream_name_list, 2):
+        graph[name_list.index(name_pair[0])][name_list.index(name_pair[1])] += 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;4-plot-social-network-graph&quot;&gt;4. Plot social network graph&lt;/h3&gt;
+&lt;p&gt;We can use the &lt;code&gt;networkX&lt;/code&gt; and &lt;code&gt;matplotlib&lt;/code&gt; packages to plot dream social network by converting the adjacency matrix into a graph.&lt;/p&gt;
+
+&lt;p&gt;First, let’s visualize how many times each character has occured across all dreams, that is, the distribution of the &lt;em&gt;degree centrality&lt;/em&gt; of each node. As the first figure shows, degree centrality appears to follow a power-law distribution, as in many real-life social networks.&lt;/p&gt;
+
+&lt;p&gt;The second figure shows the degree centrality of the 15 most “popular” characters. Take a guess at who they are–yes, they are among my closest friends and people I know from work.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;#create and plot graph using neworkX
+nxgraph = nx.from_numpy_matrix(graph)
+
+#rename nodes with character names
+mapping = dict(zip(nxgraph, name_list))
+nxgraph = nx.relabel_nodes(nxgraph, mapping)
+d = dict(nxgraph.degree)
+
+#plot the distribution of degrees for first 15 names
+#sort dictionary
+d_sorted = sorted(d.items(), key=lambda kv: kv[1], reverse = True)
+d_sorted = collections.OrderedDict(d_sorted)
+keys = d_sorted.keys()
+values = d_sorted.values()
+plt.bar(list(keys)[0:14], list(values)[0:14], color = get_color_gradient(color1, color2, 15))
+plt.xticks(rotation = &quot;vertical&quot;, size = 7)
+plt.title(&quot;Degree centrality of first 15 characters in dreams&quot;)
+plt.show()
+
+#plot histogram for degree distribution
+plt.hist(list(values), color=&quot;#F3A0F2&quot;,  bins=20)
+plt.title(&quot;Distribution of degree centrality across all characters&quot;)
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p float=&quot;left&quot;&gt;
+  &lt;img tyle=&quot;float: left;&quot; src=&quot;dream_output2.5.png&quot; alt=&quot;&quot; width=&quot;900&quot; /&gt;
+  &lt;img tyle=&quot;float: left;&quot; src=&quot;dream_output2.png&quot; alt=&quot;&quot; width=&quot;900&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;Next, let’s visualize the network graph. Here, I set the size of each node to scale with degree centrality. The node names are not shown here for privacy.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;#show network plot
+#set node size by degree centrality
+pos = nx.spring_layout(nxgraph, scale=20, k=3/np.sqrt(nxgraph.order()))
+nx.draw(nxgraph, pos, with_labels=False, 
+    node_size=[math.sqrt(v+1) * 80 for v in d.values()],
+    node_color = &quot;#6dc9c0&quot;,
+    edge_color = &quot;#c5c7c5&quot;)
+#set node color by centrality
+plt.show()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p float=&quot;left&quot;&gt;
+  &lt;img tyle=&quot;float: left;&quot; src=&quot;dream_output_network1.png&quot; alt=&quot;&quot; width=&quot;800&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;It is clear that the graph has one large component and several smaller ones and is similar to real-life social networks. To more quantitatively examine the nature of the network, we can use the &lt;code&gt;networkX&lt;/code&gt; package to calculate network metrics, including density, transitivity, and assortativity.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;#calculate and print network metrics:
+density = nx.density(nxgraph)
+transitivity = nx.transitivity(nxgraph)
+assortativity = nx.degree_assortativity_coefficient(nxgraph)
+print(&apos;\nMy social network is characterized by the following metrics:&apos;)
+print(&apos;density: &apos;, &quot;{:.3f}&quot;.format(density))
+print(&apos;transitivity: &apos;, &quot;{:.3f}&quot;.format(transitivity))
+print(&apos;degree assortativity&apos;, &quot;{:.3f}&quot;.format(assortativity))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&quot;dream_output3.png&quot; alt=&quot;&quot; width=&quot;800&quot; /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;resources&quot;&gt;Resources&lt;/h2&gt;
+
+&lt;p&gt;Below are some resources I found useful while exploring my dream data:&lt;/p&gt;
+
+&lt;h3 id=&quot;dreambank&quot;&gt;Dreambank&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.dreambank.net&quot;&gt;Dreambank&lt;/a&gt; is a database for over 20,000 dream reports. Researchers have used it to answer many interesting questions about dreams, cognition, and consciousness, such as shifts in dream content across age and the structures of dream vs. real-life social networks (&lt;a href=&quot;https://onlinelibrary.wiley.com/doi/abs/10.1111/cogs.12244&quot;&gt;Han et al., 2016&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h3 id=&quot;natural-language-processing&quot;&gt;Natural language processing&lt;/h3&gt;
+&lt;p&gt;Using the &lt;code&gt;nltk&lt;/code&gt; package to extract information from natural languages. &lt;a href=&quot;    - https://unbiased-coder.com/extract-names-python-nltk/&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Sentiment analysis in python. &lt;a href=&quot;https://towardsdatascience.com/a-beginners-guide-to-sentiment-analysis-in-python-95e354ea84f6&quot;&gt; Link &lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;DeepL&lt;/code&gt; is a useful translator I used to translate my dreams from Chinese to English. &lt;a href=&quot;https://www.deepl.com/translator&quot;&gt; Link &lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Welcome!</title>
    <link href="http://localhost:4000/2022/08/05/Resources/"/>
-   <updated>2022-08-05T00:00:00-04:00</updated>
+   <updated>2022-08-05T00:00:00-07:00</updated>
    <id>http://localhost:4000/2022/08/05/Resources</id>
    <content type="html">&lt;p&gt;Welcome to my personal website! Here you can find information about my research projects and notes about research. More posts coming soon!&lt;/p&gt;
 </content>
