@@ -12,7 +12,7 @@ title:            Yi Zhang
 tagline:          ''
 description:      'I am a psychology researcher interested in emotion, morality, and social cognition.'
 url:              /
-baseurl:          /
+baseurl:          https://yizhang96.github.io/about/ #test
 
 author:
   name:           'Yi Zhang'
