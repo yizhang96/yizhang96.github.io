@@ -27,7 +27,7 @@ Recently, I completed my [Master's thesis](/Zhang_Yi_Master_Thesis_9.9.22.pdf) b
 
 ## Past projects
 
-### Network centrality predicts enhanced craving for alcohol in social contexts.
+### Enhanced craving for alcohol in social contexts predicts centrality in undergraduate social networks.
 
 <object data="../SPSP2020_poster.pdf" type="application/pdf" width="100%" height="540px">
     <embed src="../SPSP2020_poster.pdf">
