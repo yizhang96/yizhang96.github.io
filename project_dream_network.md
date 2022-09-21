@@ -105,7 +105,7 @@ Now, we should have an adjacency matrix called `graph` containing all possible c
 
 Note that we can also examine the extracted names of `nltk` using `.label()`. `nltk` can distinguish between person names ("PERSON") and geo-political entities ("GPE") like city names. Below are the extractions from two dreams:
 
-<img src="dream_output1.png" alt="" width="400"/>
+<img src="/dream_output1.png" alt="" width="400"/>
 
 ### 3. Creating social network ties
 We will now update the values in the adjacency matrix by going through each dream document in the corpus to determine how many times each pair of names have co-occurred. Two people that appeared in the same dream are considered "connected" in the dream social network. The more two people have co-occurred, the higher their corresponding value in the matrix.
@@ -205,5 +205,3 @@ Sentiment analysis in python. <a href = "https://towardsdatascience.com/a-beginn
 
 `DeepL` is a useful translator I used to translate my dreams from Chinese to English. <a href = "https://www.deepl.com/translator"> Link </a>
 
-
------

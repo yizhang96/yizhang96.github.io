@@ -1,37 +1,20 @@
 ---
 layout: default
-title: Home
+title: About me
 ---
 
-<div class="posts">
-  {% for post in paginator.posts %}
-  <div class="post">
-    <h1 class="post-title">
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
+  <div class="page">
+    
+    <h1 class="page-title">About me</h1>
 
-    <span class="post-date">{{ post.date | date_to_string }}</span>
+    <p>Hi! I’m a PhD student in Psychology at USC. I work with <a href="https://www.hackellab.org">Leor Hackel</a>. I’m broadly interested in the nature of emotion and morality, and how they shape how we interact with other humans. My research uses a multi-method approach, using tools such as quantitative survey, psychophysiological task, and social network analysis.</p>
 
-    {{ post.content }}
+    <p>Before graduate school, I received my B.A. in Psychology and Philosophy from NYU where I studied the effect of partisan identity on fake news perception and prejudice expression in Jay Van Bavel and Jon Freeman’s labs. Then, I worked as a lab manager at Columbia in Kevin Ochsner’s lab, where I studied person perception and emotion regulation across the brain, dyadic, and social network levels.</p>
+
+    <p>Besides research, I am also passionate about science communication. Since 2021, I have been writing and translating articles for <a href="https://neu-reality.com">Neureality (神经现实)</a>, a leading non-profit science communication platform in China.</p>
+
+    <h3 id="you-can-find-my-cv-and-resume-here">You can find my <a href="/Yi%20Zhang_CV.pdf">CV</a> and <a href="/Yi_Zhang_Resume.pdf">resume</a> here.</h3>
+    <h3 id="feel-free-to-reach-out-my-email-is-yzhang51uscedu">Feel free to reach out. My email is <a href="mailto:yzhang51@usc.edu">yzhang51@usc.edu</a></h3>
+
   </div>
-  {% endfor %}
-</div>
 
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ '/' | relative_url }}page{{paginator.next_page}}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="{{ '/' | relative_url }}">Newer</a>
-    {% else %}
-      <a class="pagination-item newer" href="{{ '/' | relative_url }}page{{paginator.previous_page}}">Newer</a>
-    {% endif %}
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
-</div>

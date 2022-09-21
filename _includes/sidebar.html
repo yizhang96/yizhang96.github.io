@@ -3,7 +3,7 @@
     <div class="sidebar-about">
       <img src="/tennis.jpg" style="width: 80%; display:block; margin-left: auto; margin-right: auto;", class="myimg"></img>
       <h1>
-        <a href="{{ '/about' | relative_url }}">
+        <a href="{{ '/' | relative_url }}">
           {{ site.title }}
         </a>
       </h1>
@@ -26,7 +26,7 @@
         {% endif %}
       {% endfor %}
 
-      <a class="sidebar-nav-item{% if page.url == site.baseurl %} active{% endif %}" href="{{ '/' | relative_url }}">Blog</a>
+      <!--<a class="sidebar-nav-item{% if page.url == {{ '/blog' | base.url }} %} active{% endif %}" href="{{ '/blog' | relative_url }}">Blog</a>-->
       <h1>
 
       </h1>

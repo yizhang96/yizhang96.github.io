@@ -23,3 +23,14 @@ Recently, I completed my [Master's thesis](/Zhang_Yi_Master_Thesis_9.9.22.pdf) b
         <p>This browser does not support PDFs. Please download the PDF to view it: <a href="../SPSP2022_poster.pdf">Download PDF</a>.</p>
     </embed>
 </object>
+
+
+## Past projects
+
+### Network centrality predicts enhanced craving for alcohol in social contexts.
+
+<object data="../SPSP2020_poster.pdf" type="application/pdf" width="100%" height="540px">
+    <embed src="../SPSP2020_poster.pdf">
+        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="../SPSP2020_poster.pdf">Download PDF</a>.</p>
+    </embed>
+</object>
