@@ -21,7 +21,7 @@ Preliminary findings from this project were presented at the *Society for Person
 ### How do people learn to empathize with others?
 Valuing the welfare of others is a fundamental component of human empathy and prosocial behavior. How do people develop this valuation in the first place?
 
-In a [paper](https://osf.io/a84ry/) that is in press at *Psychological Science*, I propose that people can learn to value the general welfare of others through a simple associative learning mechanism--Pavlovian conditioning. When another person's outcomes consistently predict our own outcomes, we can attach reward to the target's affect, thereby feeling either congruent or incongruent emotions towards the target in new situations.
+In a [paper](https://osf.io/preprints/psyarxiv/xdwpq_v4) that is in press at *Psychological Science*, I propose that people can learn to value the general welfare of others through a simple associative learning mechanism--Pavlovian conditioning. When another person's outcomes consistently predict our own outcomes, we can attach reward to the target's affect, thereby feeling either congruent or incongruent emotions towards the target in new situations.
 
 ### How do people respond to rejection in social networks?
 Social environments present opportunities for connection as well as risks of rejection. How do people learn who will reject or accept them upon entering a new environment? 
