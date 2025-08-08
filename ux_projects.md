@@ -7,7 +7,6 @@ Hello! Here are some projects I worked aside from my research at USC. Using mixe
 
 ## [Mood map](/project_mood-map)
 [#Emotion]()&nbsp;&nbsp;
-[#Natural language processing]()&nbsp;&nbsp;
 [#Typescript]()&nbsp;&nbsp;
 [#UI/UX]()
 
