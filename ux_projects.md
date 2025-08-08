@@ -3,7 +3,30 @@ layout: page
 title: Fun projects
 ---
 
-Hello! Here are some projects I worked on the side of my research at USC. Using mixed quantitative tools, I hope to help people better understand themselves and make more adaptive decisions.
+Hello! Here are some projects I worked aside from my research at USC. Using mixed quantitative tools, I hope to help people better understand themselves and make more adaptive decisions.
+
+## [Mood map](/project_mood-map)
+[#Emotion]()&nbsp;&nbsp;
+[#Natural language processing]()&nbsp;&nbsp;
+[#Typescript]()&nbsp;&nbsp;
+[#UI/UX]()
+
+<div style="display: flex; align-items: center; gap: 30px; flex-wrap: wrap;">
+
+<div style="flex: 1; min-width: 300px;">
+<p>
+<b>Mood Map</b> is an interactive web tool that lets users log and visualize their emotions in real time on a 2D grid based on the circumplex model of affect (valence × arousal). Inspired by a physical version used in classroom and group settings, it encourages emotional awareness and reflection by allowing users to place and label their feelings on a shared map.
+</p>
+</div>
+
+<div style="flex: 1; min-width: 300px;">
+  <a href="/project_mood-map">
+    <img src="/mood-map.png" alt="Screenshot of Mood Map" style="width: 100%; border-radius: 8px;"/>
+  </a>
+</div>
+
+</div>
+
 
 ## [Social network analysis of dreams](/project_dream_network)
 [#Social network analysis]()&nbsp;&nbsp;

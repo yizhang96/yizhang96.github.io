@@ -116,7 +116,7 @@
     <div class="content container">
       <div class="post">
   <h1 class="post-title">A social network analysis of dreams</h1>
-  <span class="post-date">16 Sep 2022</span>
+  <span class="post-date"></span>
   <h2 id="table-of-contents">Table of Contents</h2>
 <ul>
   <li><a href="#introduction">Introduction</a></li>
@@ -223,7 +223,7 @@ graph = np.zeros((len(name_list), len(name_list)))
 
 <p>Note that we can also examine the extracted names of <code>nltk</code> using <code>.label()</code>. <code>nltk</code> can distinguish between person names (“PERSON”) and geo-political entities (“GPE”) like city names. Below are the extractions from two dreams:</p>
 
-<p><img src="dream_output1.png" alt="" width="400" /></p>
+<p><img src="/dream_output1.png" alt="" width="400" /></p>
 
 <h3 id="3-creating-social-network-ties">3. Creating social network ties</h3>
 <p>We will now update the values in the adjacency matrix by going through each dream document in the corpus to determine how many times each pair of names have co-occurred. Two people that appeared in the same dream are considered “connected” in the dream social network. The more two people have co-occurred, the higher their corresponding value in the matrix.</p>
@@ -318,22 +318,12 @@ print('degree assortativity', "{:.3f}".format(assortativity))
 
 <p><code>DeepL</code> is a useful translator I used to translate my dreams from Chinese to English. <a href="https://www.deepl.com/translator"> Link </a></p>
 
-<hr />
 
 </div>
 
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    
-      <li>
-        <h3>
-          <a href="/2022/08/05/Resources/">
-            Welcome!
-            <small>05 Aug 2022</small>
-          </a>
-        </h3>
-      </li>
     
   </ul>
 </div>

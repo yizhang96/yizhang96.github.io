@@ -4,7 +4,7 @@
  <title>Yi Zhang</title>
  <link href="http://localhost:4000/atom.xml" rel="self"/>
  <link href="http://localhost:4000/"/>
- <updated>2022-09-19T18:31:33-07:00</updated>
+ <updated>2025-08-07T19:28:58-07:00</updated>
  <id>http://localhost:4000</id>
  <author>
    <name>Yi Zhang</name>
@@ -49,7 +49,7 @@
 
 &lt;p&gt;The dream corpus used for this demonstration contains 100 dream entries entered between January and June 2019. Below is a glance at the file:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;dream_example.png&quot; alt=&quot;dream-example&quot; title=&quot;examples from dream corpus&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/dream_example.png&quot; alt=&quot;dream-example&quot; title=&quot;examples from dream corpus&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can see, each dream narrative contains names, locations, and emotional states. In this demonstration, I will first create a social network for the character names in my dreams. Then, I will use sentiment analysis to explore how my emotional states in dreams have flucuated across time.&lt;/p&gt;
 
@@ -167,8 +167,8 @@ plt.show()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p float=&quot;left&quot;&gt;
-  &lt;img tyle=&quot;float: left;&quot; src=&quot;dream_output2.5.png&quot; alt=&quot;&quot; width=&quot;900&quot; /&gt;
-  &lt;img tyle=&quot;float: left;&quot; src=&quot;dream_output2.png&quot; alt=&quot;&quot; width=&quot;900&quot; /&gt;
+  &lt;img tyle=&quot;float: left;&quot; src=&quot;/dream_output2.5.png&quot; alt=&quot;&quot; width=&quot;900&quot; /&gt;
+  &lt;img tyle=&quot;float: left;&quot; src=&quot;/dream_output2.png&quot; alt=&quot;&quot; width=&quot;900&quot; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;Next, let’s visualize the network graph. Here, I set the size of each node to scale with degree centrality. The node names are not shown here for privacy.&lt;/p&gt;
@@ -185,7 +185,7 @@ plt.show()
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p float=&quot;left&quot;&gt;
-  &lt;img tyle=&quot;float: left;&quot; src=&quot;dream_output_network1.png&quot; alt=&quot;&quot; width=&quot;800&quot; /&gt;
+  &lt;img tyle=&quot;float: left;&quot; src=&quot;/dream_output_network1.png&quot; alt=&quot;&quot; width=&quot;800&quot; /&gt;
 &lt;/p&gt;
 
 &lt;p&gt;It is clear that the graph has one large component and several smaller ones and is similar to real-life social networks. To more quantitatively examine the nature of the network, we can use the &lt;code&gt;networkX&lt;/code&gt; package to calculate network metrics, including density, transitivity, and assortativity.&lt;/p&gt;
@@ -200,7 +200,7 @@ print(&apos;transitivity: &apos;, &quot;{:.3f}&quot;.format(transitivity))
 print(&apos;degree assortativity&apos;, &quot;{:.3f}&quot;.format(assortativity))
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;p&gt;&lt;img src=&quot;dream_output3.png&quot; alt=&quot;&quot; width=&quot;800&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/dream_output3.png&quot; alt=&quot;&quot; width=&quot;800&quot; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
