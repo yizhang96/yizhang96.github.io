@@ -23,9 +23,9 @@ Seeing its impact on emotional awareness and connection, I wanted to explore whe
 
 Here’s the digital mood map I built. Feel free to interact with it right in your browser:
 
-<iframe src="https://yizhang96.github.io/mood-map/" width="100%" height="800px" style="border:none;"></iframe>
+<iframe src="https://yizhang96.github.io/mood-map/v1/" width="100%" height="800px" style="border:none;"></iframe>
 
-If the embedded view doesn’t load, you can also [open it in a new tab](https://yizhang96.github.io/mood-map/).
+If the embedded view doesn’t load, you can also [open it in a new tab](https://yizhang96.github.io/mood-map/v1/).
 
 To log your mood, simply:
 
