@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Fun projects
+title: UX & data projects
 ---
 
 Hello! Here are some projects I worked aside from my research at USC. Using mixed quantitative tools, I hope to help people better understand themselves and make more adaptive decisions.

@@ -21,12 +21,12 @@ Preliminary findings from this project were presented at the *Society for Person
 ### How do people learn to empathize with others?
 Valuing the welfare of others is a fundamental component of human empathy and prosocial behavior. How do people develop this valuation in the first place?
 
-In a [paper](https://osf.io/preprints/psyarxiv/xdwpq_v4) that is in press at *Psychological Science*, I propose that people can learn to value the general welfare of others through a simple associative learning mechanism--Pavlovian conditioning. When another person's outcomes consistently predict our own outcomes, we can attach reward to the target's affect, thereby feeling either congruent or incongruent emotions towards the target in new situations.
+In a [paper](https://osf.io/preprints/psyarxiv/xdwpq_v4) in press at *Psychological Science*, I propose that people can learn to value the general welfare of others through a simple associative learning mechanism--Pavlovian conditioning. When another person's outcomes consistently predict our own outcomes, we can attach reward to the target's affect, thereby feeling either congruent or incongruent emotions towards the target in new situations.
 
 ### How do people respond to rejection in social networks?
 Social environments present opportunities for connection as well as risks of rejection. How do people learn who will reject or accept them upon entering a new environment? 
 
-In a recent [preprint](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5263641), I present evidence that people generalize rejection and acceptance based on their knowledge of the structure of the social environment. Following rejection (acceptance), people avoid (approach) novel targets as a function of their distance from the original rejector (accepter) in the friendship network.
+In a [paper](https://osf.io/preprints/psyarxiv/cqa4m_v1) in press at the *Journal of Experimental Social Psychology*, I present evidence that people generalize rejection and acceptance based on their knowledge of the structure of the social environment. Following rejection (acceptance), people avoid (approach) novel targets as a function of their distance from the original rejector (accepter) in the friendship network.
 
 ## Past projects
 
