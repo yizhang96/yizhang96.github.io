@@ -3,11 +3,14 @@ layout: page
 title: About me
 ---
 
-Hi! I’m a PhD student in Psychology at USC. I work with [Leor Hackel](https://www.hackellab.org). I’m broadly interested in how emotion shapes social connection and wellbeing. My research uses a multi-method approach, using tools such as quantitative survey, psychophysiological task, and social network analysis.
+Hi! I’m **Yi Zhang**, a Ph.D. candidate in Psychology at the University of Southern California, advised by [Leor Hackel](https://www.hackellab.org).  
+My work examines how social experiences shape empathy, social connection, and psychological well-being. I use **multi-method approaches** including behavioral experiments, longitudinal social network analysis, and natural language processing.
 
-Before graduate school, I received my B.A. in Psychology and Philosophy from NYU where I studied the effect of partisan identity on fake news perception and prejudice expression in Jay Van Bavel and Jon Freeman’s labs. Then, I worked as a lab manager at Columbia in Kevin Ochsner’s lab, where I studied person perception and emotion regulation across the brain, dyadic, and social network levels.
+Alongside my academic work, I am passionate about **human-centered design and technology**. In my past internships, I worked on translating psychological theory into digital wellbeing interventions and designing and evaluating tools that help people reflect, regulate emotions, and connect with others.
 
-Besides research, I am also passionate about science communication. Since 2021, I have been writing and translating articles for [Neureality (神经现实)](https://neu-reality.com), a leading science communication platform in China, exploring topics such as [social connection, empathy, and AI](https://medium.com/@yzhang51/reimagining-empathy-in-the-era-of-ai-fde1117bec12).
+Outside research, I’m passionate about **science communication**. Since 2021, I’ve written and translated articles for [Neureality (神经现实)](https://neu-reality.com), covering topics such as [social connection, empathy, and AI](https://medium.com/@yzhang51/reimagining-empathy-in-the-era-of-ai-fde1117bec12).
+
+Before USC, I received my B.A. in Psychology and Philosophy** from New York University, where I studied how partisan identity influences misinformation and prejudice expression in the labs of Jay Van Bavel and Jon Freeman. I later worked as a lab manager at Columbia University with Kevin Ochsner, investigating emotion regulation across the brain, dyadic, and social-network levels.
 
 ### You can find my [CV](/Yi%20Zhang_CV.pdf) and [resume](/Yi_Zhang_Resume.pdf) here.
 ### Feel free to reach out. My email is [yzhang51@usc.edu](mailto:yzhang51@usc.edu)
