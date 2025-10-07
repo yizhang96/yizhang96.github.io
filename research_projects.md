@@ -3,37 +3,30 @@ layout: page
 title: Research projects
 ---
 
-## Ongoing projects
+## Ongoing Projects
 
-### An emotion regulation framework for interpersonal moral disagreements
-Moral disagreements are common in everyday life and people can respond to them in many ways, from avoidance and terminating interaction, to switching topic and keeping silent, to perspective-taking and seeking common ground. How should these responses be organized, and how can we predict which response an individual will adopt in a particular situation?
+### Emotion regulation in interpersonal moral disagreements  
+**Manuscript:** *Preprint available soon*  
+[**OSF**](https://osf.io/7k4nd/)
+**Links:** [View Poster (PDF)](../SPSP2024_poster.pdf)
 
-In my dissertation, I propose that responses to interpersonal moral disagreements can be understood as emotion regulation processes. According to this framework, responses to disagreements cluster into groups that reflect well-characterized emotion regulation strategies, including situation selection, reappraisal, and suppression. In turn, we can predict which response an individual will choose using both trait-level emotion regulation tendencies and situation-level perception of the cost and benefit of pursuing each strategy.
+People often face moral disagreements—should I disengage, stay silent, or try to understand the other person?  
+This project proposes an **emotion regulation framework** for understanding how people manage such conflicts in relationship contexts.  
+We propose that typical responses (e.g., keeping silent, updating belief, perspective-taking) can be organized by underlying regulatory goals (e.g. moral vs. relational values) and emotion regulation tendencies (e.g. disengagement, situation-modification, and reappraisal).
 
-Preliminary findings from this project were presented at the *Society for Personality and Social Psychology* (SPSP) 2024 Conference. The preprint will be available soon.
+---
 
-<object data="../SPSP2024_poster.pdf" type="application/pdf" width="100%" height="410px">
-    <embed src="../SPSP2024_poster.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="../SPSP2024_poster.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+### How do people respond to rejection in social networks?  
+**Publication:** [Zhang & Hackel (in press). *Journal of Experimental Social Psychology*](https://osf.io/preprints/psyarxiv/cqa4m_v1)  
+**OSF:** [Project Page](https://osf.io/cqa4m)  
 
-### How do people learn to empathize with others?
-Valuing the welfare of others is a fundamental component of human empathy and prosocial behavior. How do people develop this valuation in the first place?
+Social environments offer opportunities for connection but also risk of rejection. How do people identify potential accepters and rejectors in novel social environments? Across lab experiments and real-world student organizations, we found that participants **generalized rejection and acceptance** based on network ties—avoiding friends of a rejector and approaching friends of an accepter. 
+When navigating novel environments, people use their knowledge of social network structure to infer how much they are valued by others and to choose social partners.
 
-In a [paper](https://osf.io/preprints/psyarxiv/xdwpq_v4) in press at *Psychological Science*, I propose that people can learn to value the general welfare of others through a simple associative learning mechanism--Pavlovian conditioning. When another person's outcomes consistently predict our own outcomes, we can attach reward to the target's affect, thereby feeling either congruent or incongruent emotions towards the target in new situations.
+---
 
-### How do people respond to rejection in social networks?
-Social environments present opportunities for connection as well as risks of rejection. How do people learn who will reject or accept them upon entering a new environment? 
+### How shared experience promotes empathy and prosocial behavior 
+**Publication:** [Zhang & Hackel (in press). *Psychological Science*](https://osf.io/preprints/psyarxiv/xdwpq_v4)  
+**OSF:** [Project Page](https://osf.io/58wsu)
 
-In a [paper](https://osf.io/preprints/psyarxiv/cqa4m_v1) in press at the *Journal of Experimental Social Psychology*, I present evidence that people generalize rejection and acceptance based on their knowledge of the structure of the social environment. Following rejection (acceptance), people avoid (approach) novel targets as a function of their distance from the original rejector (accepter) in the friendship network.
-
-## Past projects
-
-### Enhanced craving for alcohol in social contexts predicts centrality in undergraduate social networks.
-
-<object data="../SPSP2020_poster.pdf" type="application/pdf" width="100%" height="540px">
-    <embed src="../SPSP2020_poster.pdf">
-        <p>This browser does not support PDFs. Please download the PDF to view it: <a href="../SPSP2020_poster.pdf">Download PDF</a>.</p>
-    </embed>
-</object>
+Humans value the welfare of other humans, but how is this valuation developed in the first place? We showed that empathy can emerge through **associative learning** of *abstract mental states*. When another person’s life outcomes predict our own, we attach reward to their mental states (e.g. "feeling good") and as a result become more empathic toward their general well-being.
