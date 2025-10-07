@@ -3,7 +3,7 @@ layout: page
 title: About me
 ---
 
-Hi! I’m **Yi Zhang**, a Ph.D. candidate in Psychology at the University of Southern California, advised by [Leor Hackel](https://www.hackellab.org). My work examines how social experiences shape empathy, social connection, and psychological well-being. I use **multi-method approaches** including behavioral experiments, longitudinal social network analysis, and natural language processing.
+Hi! I’m Yi Zhang, a Ph.D. candidate in Psychology at the University of Southern California, advised by [Leor Hackel](https://www.hackellab.org). My work examines **how social experiences shape empathy, social connection, and well-being**. I use multi-method approaches including behavioral experiments, longitudinal social network analysis, and natural language processing.
 
 Alongside my academic work, I am passionate about **human-centered design and technology**. In my past internships, I worked on translating psychological theory into digital wellbeing interventions and designing and evaluating tools that help people reflect, regulate emotions, and connect with others.
 
