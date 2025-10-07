@@ -5,6 +5,8 @@ title: UX & data projects
 
 Hello! Here are some projects I worked aside from my research at USC. Using mixed quantitative tools, I hope to help people better understand themselves and make more adaptive decisions.
 
+---
+
 ## [Mood map](/project_mood-map)
 [#Emotion]()&nbsp;&nbsp;
 [#Typescript]()&nbsp;&nbsp;
@@ -26,6 +28,7 @@ Hello! Here are some projects I worked aside from my research at USC. Using mixe
 
 </div>
 
+---
 
 ## [Social network analysis of dreams](/project_dream_network)
 [#Social network analysis]()&nbsp;&nbsp;
@@ -37,6 +40,7 @@ Since 2019, I have been keeping a dream journal. In this project, I analyzed the
 
 <a href = "/project_dream_network"><img src="/dream_network.png" alt="" width="800"/></a>
 
+---
 
 ## [User research for the PaceTodo App](/project_pacetodo)
 [#UX research]()&nbsp;&nbsp;

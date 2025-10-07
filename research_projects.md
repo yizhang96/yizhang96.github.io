@@ -10,7 +10,7 @@ title: Research projects
 **OSF:** [Project Page](https://osf.io/7k4nd/)
 
 People often face moral disagreements—should I disengage, stay silent, or try to understand the other person?  
-This project proposes an **emotion regulation framework** for understanding how people manage such conflicts in relationship contexts.  
+This project (currently under review at *Emotion*) proposes an **emotion regulation framework** for understanding how people manage such conflicts in relationship contexts.  
 We propose that typical responses (e.g., keeping silent, updating belief, perspective-taking) can be organized by underlying regulatory goals (e.g. moral vs. relational values) and emotion regulation tendencies (e.g. disengagement, situation-modification, and reappraisal).
 
 ---
