@@ -7,8 +7,7 @@ title: Research projects
 
 ### Emotion regulation in interpersonal moral disagreements  
 **Manuscript:** *Preprint available soon*  
-[**OSF**](https://osf.io/7k4nd/)
-**Links:** [View Poster (PDF)](../SPSP2024_poster.pdf)
+**OSF:** [Project Page](https://osf.io/7k4nd/)
 
 People often face moral disagreements—should I disengage, stay silent, or try to understand the other person?  
 This project proposes an **emotion regulation framework** for understanding how people manage such conflicts in relationship contexts.  
