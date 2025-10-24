@@ -1,5 +1,8 @@
 # Dependencies
-gems:             [jekyll-paginate, jekyll-gist]
+plugins:
+  - jekyll-paginate
+  - jekyll-gist
+
 markdown:         kramdown
 highlighter:      Rouge
 
@@ -22,6 +25,12 @@ paginate:         5
 
 # Custom vars
 version:          2.1.0
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
 
 github:
   repo:           https://github.com/poole/hyde

@@ -1,0 +1,18 @@
+current directory: /Users/yizhang/Library/Mobile Documents/com~apple~CloudDocs/Documents/GitHub/yizhang96.github.io/vendor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+/opt/homebrew/opt/ruby/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /Users/yizhang/Library/Mobile Documents/com~apple~CloudDocs/Documents/GitHub/yizhang96.github.io/vendor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20251023-81123-8kbnpk sitelibdir\=./.gem.20251023-81123-8kbnpk clean
+
+current directory: /Users/yizhang/Library/Mobile Documents/com~apple~CloudDocs/Documents/GitHub/yizhang96.github.io/vendor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20251023-81123-8kbnpk sitelibdir\=./.gem.20251023-81123-8kbnpk
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+
+current directory: /Users/yizhang/Library/Mobile Documents/com~apple~CloudDocs/Documents/GitHub/yizhang96.github.io/vendor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20251023-81123-8kbnpk sitelibdir\=./.gem.20251023-81123-8kbnpk install
+/usr/bin/install -c -m 0755 cparse.bundle ./.gem.20251023-81123-8kbnpk/racc
+
+current directory: /Users/yizhang/Library/Mobile Documents/com~apple~CloudDocs/Documents/GitHub/yizhang96.github.io/vendor/bundle/ruby/3.4.0/gems/racc-1.8.1/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20251023-81123-8kbnpk sitelibdir\=./.gem.20251023-81123-8kbnpk clean

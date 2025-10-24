@@ -1,0 +1,58 @@
+<article class="project-card" data-category="{{ p.category | escape }}">
+    <div class="card-media">
+        {% if p.thumb %}
+          <img src="{{ p.thumb | relative_url }}" alt="{{ p.title | escape }}" loading="lazy">
+        {% else %}
+          <div class="placeholder" aria-hidden="true"></div>
+        {% endif %}
+      
+        {% if p.status %}
+          <div class="status-pill"
+               style="--status-color: {{ p.status_color | default: '#3b82f6' }}">
+            {{ p.status }}
+          </div>
+        {% endif %}
+      </div>
+  
+    <div class="card-body">
+      <h3 class="card-title">{{ p.title }}</h3>
+      <p class="card-summary">{{ p.summary }}</p>
+  
+      {% if p.tags and p.tags.size > 0 %}
+        <div class="tag-pills">
+          {% for t in p.tags %}
+            <span class="tag-pill">{{ t }}</span>
+          {% endfor %}
+        </div>
+      {% endif %}
+  
+      <div class="card-links">
+        {% if p.links.paper %}
+          <a class="btn-link" href="{{ p.links.paper }}" target="_blank" rel="noopener">Paper</a>
+        {% endif %}
+        {% if p.links.preprint %}
+          <a class="btn-link" href="{{ p.links.preprint }}" target="_blank" rel="noopener">Preprint</a>
+        {% endif %}
+        {% if p.links.osf %}
+          <a class="btn-link" href="{{ p.links.osf }}" target="_blank" rel="noopener">OSF</a>
+        {% endif %}
+        {% if p.links.github %}
+          <a class="btn-link" href="{{ p.links.github }}" target="_blank" rel="noopener">GitHub</a>
+        {% endif %}
+        {% if p.links.demo %}
+          <a class="btn-link" href="{{ p.links.demo }}" target="_blank" rel="noopener">Demo</a>
+        {% endif %}
+        {% if p.links.press %}
+          <a class="btn-link" href="{{ p.links.press }}" target="_blank" rel="noopener">Press</a>
+        {% endif %}
+      </div>
+  
+      <div class="card-meta">
+        {% if p.category %}<span class="badge">{{ p.category }}</span>{% endif %}
+        <!--{% if p.year %}<span class="dot"></span><span class="muted">{{ p.year }}</span>{% endif %}
+      -->
+        
+    </div>
+    </div>
+  </article>
+  
