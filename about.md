@@ -12,5 +12,5 @@ Outside research, I’m passionate about **science communication**. Since 2021, 
 Before USC, I received my B.A. in Psychology and Philosophy from New York University, working in Jay Van Bavel and Jon Freeman's labs. Later, I worked as a lab manager at Columbia University with Kevin Ochsner.
 
 ### You can find my [CV](/Yi%20Zhang_CV.pdf) here.
-### Feel free to reach out. My email is [yzhang51@usc.edu](mailto:yzhang51@usc.edu)
+### Feel free to reach out. My email is [yzhang51@usc.edu](mailto:yzhang51@usc.edu).
 
