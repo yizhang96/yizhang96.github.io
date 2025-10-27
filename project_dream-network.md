@@ -29,7 +29,7 @@ Feel free to check the [Github repository](https://github.com/yizhang96/dream-ne
 
 The dream corpus used for this demonstration contains 100 dream entries entered between January and June 2019. Below is a glance at the file:
 
-![dream-example](/dream_example.png "examples from dream corpus")
+![dream-example](/assets/image/dream-network/dream_example.png "examples from dream corpus")
 
 As you can see, each dream narrative contains names, locations, and emotional states. In this demonstration, I will first create a social network for the character names in my dreams. Then, I will use sentiment analysis to explore how my emotional states in dreams have flucuated across time.
 
@@ -105,7 +105,7 @@ Now, we should have an adjacency matrix called `graph` containing all possible c
 
 Note that we can also examine the extracted names of `nltk` using `.label()`. `nltk` can distinguish between person names ("PERSON") and geo-political entities ("GPE") like city names. Below are the extractions from two dreams:
 
-<img src="/dream_output1.png" alt="" width="400"/>
+<img src="/assets/image/dream-network/dream_output1.png" alt="" width="400"/>
 
 ### 3. Creating social network ties
 We will now update the values in the adjacency matrix by going through each dream document in the corpus to determine how many times each pair of names have co-occurred. Two people that appeared in the same dream are considered "connected" in the dream social network. The more two people have co-occurred, the higher their corresponding value in the matrix.
@@ -152,8 +152,8 @@ plt.show()
 ```
 
 <p float="left">
-  <img tyle="float: left;" src="/dream_output2.5.png" alt="" width="900"/>
-  <img tyle="float: left;" src="/dream_output2.png" alt="" width="900"/>
+  <img tyle="float: left;" src="/assets/image/dream-network/dream_output2.5.png" alt="" width="900"/>
+  <img tyle="float: left;" src="/assets/image/dream-network/dream_output2.png" alt="" width="900"/>
 </p>
 
 Next, let's visualize the network graph. Here, I set the size of each node to scale with degree centrality. The node names are not shown here for privacy.
@@ -171,7 +171,7 @@ plt.show()
 ```
 
 <p float="left">
-  <img tyle="float: left;" src="/dream_output_network1.png" alt="" width="800"/>
+  <img tyle="float: left;" src="/assets/image/dream-network/dream_output_network1.png" alt="" width="800"/>
 </p>
 
 It is clear that the graph has one large component and several smaller ones and is similar to real-life social networks. To more quantitatively examine the nature of the network, we can use the `networkX` package to calculate network metrics, including density, transitivity, and assortativity.
@@ -187,7 +187,7 @@ print('transitivity: ', "{:.3f}".format(transitivity))
 print('degree assortativity', "{:.3f}".format(assortativity))
 ```
 
-<img src="/dream_output3.png" alt="" width="800"/>
+<img src="/assets/image/dream-network/dream_output3.png" alt="" width="800"/>
 
 -----
 

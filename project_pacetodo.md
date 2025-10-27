@@ -37,27 +37,27 @@ We collected 52 responses from current graduate students at the University of Pe
 ### 1. Unexpected delays are very common
 Around half of the respondents indicate they experience delay half of the time, or more. This ratio is similar between time management app users and non-app users, indicating that **time management apps have limited efficacy**.
 
-![pacetodo-data1](/pacetodo_data1.png "delay frequency")
+![pacetodo-data1](/assets/image/pacetodo/pacetodo_data1.png "delay frequency")
 
 
 ### 2. Perceived causes of delays
 
-![pacetodo-data1](/pacetodo_data2.png "delay frequency")
+![pacetodo-data1](/assets/image/pacetodo/pacetodo_data2.png "delay frequency")
 
 
 ### 3. Perceived consequences of delays
 
 Next, we examined respondents' perceived consequences of delays. Over half of the respondents experience either self-blame or anxiety when they fail to meet a deadline. Notably, the proportion of respodents that experience both self-blame and anxiety is considerably higher among app users than non-app users. This suggests that **time management apps generally fail to address the emotional needs of the users**.
 
-![pacetodo-data1](/pacetodo_data3.png "delay frequency")
+![pacetodo-data1](/assets/image/pacetodo/pacetodo_data3.png "delay frequency")
 
 ### 4. Perceived helpfulness of time management apps
 
 Google/Apple calendars and Focus Keeper are the two most commonly used time-management apps. While these apps are generally perceived to be helpful with planning and reflection, they have limited sucess in helping the users execute their planned tasks, and are worse still at providing emotional support to the users.
 
-![pacetodo-data1](/pacetodo_data4.png "delay frequency")
+![pacetodo-data1](/assets/image/pacetodo/pacetodo_data4.png "delay frequency")
 
-![pacetodo-data1](/pacetodo_data5.png "delay frequency")
+![pacetodo-data1](/assets/image/pacetodo/pacetodo_data5.png "delay frequency")
 
 
 ## Discussion
@@ -71,11 +71,11 @@ Based on the data above, we make the following conclusions:
 To address these limtations, we focus on two key features in our initial design of the PaceTodo app. 
 1. First, PaceTodo leverages insight from the **behavioral science of reinforcement learning** by monitoring and comparing users' *anticipated* time with their *actual* time spent and providing feedback accordingly. With adaptive feedback, we hope to help the users develop more accurate time perceptions, thereby alleviating delays.
 
-![pacetodo-app2](/pacetodo_app2.png "time perception training")
+![pacetodo-app2](/assets/image/pacetodo/pacetodo_app2.png "time perception training")
 
 2. Second, inspired by findings from social psychology that human beings have an intrinsic need for social connection and support, PaceTodo uses an **anthropomorphized interface to provide companionship and emotional support** to its users. As the app is running, Pacy, an animated cartoon figure will accompany the users and send them reminders when it is time for lunch/dinner/rest. With this design, we hope to provide our users the emotional affordances
 
-![pacetodo-app1](/pacetodo_app1.png "emotional support and companionship")
+![pacetodo-app1](/assets/image/pacetodo/pacetodo_app1.png "emotional support and companionship")
 
 
 ## Data collection plans

@@ -15,7 +15,13 @@
       </div>
   
     <div class="card-body">
-      <h3 class="card-title">{{ p.title }}</h3>
+        <h3 class="card-title">
+            {% if p.link %}
+              <a href="{{ p.link | relative_url }}" class="card-title-link">{{ p.title }}</a>
+            {% else %}
+              {{ p.title }}
+            {% endif %}
+          </h3>
       <p class="card-summary">{{ p.summary }}</p>
   
       {% if p.tags and p.tags.size > 0 %}
@@ -32,6 +38,9 @@
         {% endif %}
         {% if p.links.preprint %}
           <a class="btn-link" href="{{ p.links.preprint }}" target="_blank" rel="noopener">Preprint</a>
+        {% endif %}
+        {% if p.links.poster %}
+          <a class="btn-link" href="{{ p.links.poster }}" target="_blank" rel="noopener">Poster</a>
         {% endif %}
         {% if p.links.osf %}
           <a class="btn-link" href="{{ p.links.osf }}" target="_blank" rel="noopener">OSF</a>
