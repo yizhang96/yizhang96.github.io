@@ -34,6 +34,9 @@ collections:
   ux_projects:
     output: true
     permalink: /ux_projects/:name/
+  writings:
+    output: true
+    permalink: /writings/:name/
 
 github:
   repo:           https://github.com/poole/hyde
