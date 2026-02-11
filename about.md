@@ -9,8 +9,7 @@ Alongside my academic work, I am passionate about **human-centered design and te
 
 Outside research, I’m passionate about **science communication**. Since 2021, I’ve written and translated articles for [Neureality (神经现实)](https://neu-reality.com), covering topics such as [social connection, empathy, and AI](https://medium.com/@yzhang51/reimagining-empathy-in-the-era-of-ai-fde1117bec12).
 
-Before USC, I received my B.A. in Psychology and Philosophy from New York University, working in Jay Van Bavel and Jon Freeman's labs. Later, I worked as a lab manager at Columbia University with Kevin Ochsner.
+Before USC, I received my B.A. in Psychology and Philosophy from New York University, working in Jay Van Bavel and Jon Freeman&#39;s labs. Later, I worked as a lab manager at Columbia University with Kevin Ochsner.
 
 ### You can find my [CV](/Yi%20Zhang_CV.pdf) here.
 ### Feel free to reach out. My email is [yzhang51@usc.edu](mailto:yzhang51@usc.edu).
-
