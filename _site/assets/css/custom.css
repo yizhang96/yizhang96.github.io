@@ -182,3 +182,140 @@
       margin-top: 8px;
     }
   }
+
+/* ----- MOOD MAP DEPLOYMENT INSIGHTS ----- */
+.deployment-figure {
+  margin: 24px 0 22px;
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+
+.deployment-figure img {
+  width: 100%;
+  display: block;
+}
+
+.deployment-caption {
+  margin: 0 !important;
+  padding: 10px 14px;
+  color: #666;
+  font-size: .86rem;
+  line-height: 1.4;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+}
+
+.figure-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 24px 0 22px;
+  align-items: start;
+}
+
+.figure-grid .deployment-figure {
+  margin: 0;
+}
+
+.insight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 18px 0 22px;
+}
+
+.insight-card {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  padding: 14px 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.insight-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+}
+
+.insight-label {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: #eef4f2;
+  color: #3f6f64;
+  font-size: .76rem;
+  font-weight: 700;
+}
+
+.insight-label.strength {
+  background: #edf5f1;
+  color: #3f6f64;
+}
+
+.insight-label.tradeoff {
+  background: #f7f1ea;
+  color: #8a6040;
+}
+
+.insight-card h4 {
+  margin: 0 0 6px;
+  font-size: .98rem;
+  line-height: 1.3;
+}
+
+.insight-card p {
+  margin: 0;
+  color: #444;
+  font-size: .9rem;
+  line-height: 1.45;
+}
+
+.theme-details {
+  margin: 8px 0 20px;
+  border: 1px solid #e6e6e6;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+  overflow: hidden;
+}
+
+.theme-details summary {
+  cursor: pointer;
+  padding: 12px 14px;
+  color: #5f95a8;
+  font-weight: 700;
+  background: #f5f9fa;
+}
+
+.quote-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  padding: 14px;
+}
+
+.quote-card {
+  border-left: 3px solid #8db6c5;
+  background: #f7fbfc;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.quote-card h5 {
+  margin: 0 0 5px;
+  font-size: .9rem;
+  line-height: 1.3;
+}
+
+.quote-card p {
+  margin: 0;
+  color: #555;
+  font-size: .86rem;
+  line-height: 1.42;
+  font-style: italic;
+}

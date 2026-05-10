@@ -9,7 +9,7 @@ title: Social Media Comment Map
 * [Demo](#demo)
 * [Method](#method)
 * [Findings and Implications](#findings-and-implications)
-* [Scope and Next Steps](#scope-and-next-steps)
+* [Resources](#resources)
 
 
 ## Project Overview
@@ -107,6 +107,6 @@ From a product perspective, this raises design questions:
 From a policy perspective, transparency in comment representation could become part of broader algorithmic accountability conversations.
 
 
-### Resources
+## Resources
 
 This project was inspired by [Talk to the City](https://talktothe.city/), built by the AI Objectives Institute, which explores how collective input can be summarized while preserving nuance. 

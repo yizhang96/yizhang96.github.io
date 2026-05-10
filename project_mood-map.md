@@ -13,9 +13,10 @@ title: Mood Map | UX Research & Design
 ## Table of Contents
 * [Introduction](#introduction)
 * [Research](#research)
-* [Design Iteration](#design-iteration)
-* [Prototype Demo](#prototype-demo)
-* [Outcomes & Reflection](#outcomes--reflection)
+* [Design iteration](#design-iteration)
+* [Prototype demo](#prototype-demo)
+* [Real-world deployment](#real-world-deployment)
+* [Outcomes & reflection](#outcomes--reflection)
 * [Credits](#credits)
 
 ---
@@ -41,16 +42,16 @@ To gather users' feedback on the initial version of the Mood Map and improve the
 
 ## Design Iteration
 
-<div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: flex-start;">
+<div class="figure-grid">
 
-  <div style="flex: 1; min-width: 300px; text-align: center;">
-    <img src="/assets/image/mood-map/mood-map-v1.png" alt="Mood Map V1" style="width:100%; border-radius:10px;">
-    <p>Mood Map Version 1</p>
+  <div class="deployment-figure design-figure">
+    <img src="/assets/image/mood-map/mood-map-v1.png" alt="Mood Map V1">
+    <p class="deployment-caption">Mood Map Version 1</p>
   </div>
 
-  <div style="flex: 1; min-width: 300px; text-align: center;">
-    <img src="/assets/image/mood-map/mood-map-v2.png" alt="Mood Map V2" style="width:100%; border-radius:10px;">
-    <p>Mood Map Version 2</p>
+  <div class="deployment-figure design-figure">
+    <img src="/assets/image/mood-map/mood-map-v2.png" alt="Mood Map V2">
+    <p class="deployment-caption">Mood Map Version 2</p>
   </div>
 
 </div>
@@ -69,18 +70,92 @@ Finally, I enhanced visual contrast, hover feedback, and layout responsiveness a
 ---
 
 ## Prototype Demo
-Here’s the digital mood map prototype. Feel free to interact with it directly in your browser:
+Explore the digital Mood Map prototype here: [Open interactive prototype](https://yizhang96.github.io/mood-map/v2/){:target="_blank" rel="noopener"}.
 
-<iframe src="https://yizhang96.github.io/mood-map/v2/" width="100%" height="600px" style="border:none;"></iframe>
+---
 
-If the embedded view doesn’t load, you can also [open it in a new tab](https://yizhang96.github.io/mood-map/v1/).
+## Real-world deployment
+To evaluate Mood Map in a real group setting, I deployed the prototype in two psychology lab sections and collected open-ended feedback from 42 students about their experience seeing classmates' moods in real time.
+
+<div class="deployment-figure">
+  <img src="/assets/image/mood-map/deployment.png" alt="Real-time Mood Map deployment in a psychology lab">
+  <p class="deployment-caption">Real-time mood distribution from a classroom deployment.</p>
+</div>
+
+**Key Takeaways:**  
+
+<div class="insight-grid">
+  <div class="insight-card">
+    <span class="insight-label strength">Strength</span>
+    <h4>Quick and visual</h4>
+    <p>Students described Mood Map as faster, easier to interpret, and more approachable than a longer affect survey.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="insight-label strength">Strength</span>
+    <h4>Socially validating</h4>
+    <p>The shared view helped many students feel reassured, connected, and less alone in their emotions.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="insight-label strength">Strength</span>
+    <h4>Real-time awareness</h4>
+    <p>Students valued seeing how group mood shifted during class and how their own mood compared with others'.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="insight-label tradeoff">Tradeoff</span>
+    <h4>Less standardized</h4>
+    <p>Compared with PANAS-style measures, students saw the map as more subjective and harder to analyze statistically.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="insight-label tradeoff">Tradeoff</span>
+    <h4>Privacy and comparison</h4>
+    <p>Some students noted that public mood visibility could make people self-conscious or influence their responses.</p>
+  </div>
+
+  <div class="insight-card">
+    <span class="insight-label tradeoff">Tradeoff</span>
+    <h4>Limited explanation</h4>
+    <p>The map shows where people are emotionally, but does not fully explain why they feel that way.</p>
+  </div>
+
+</div>
+
+<details class="theme-details">
+  <summary>View representative student feedback</summary>
+  <div class="quote-grid">
+    <div class="quote-card">
+      <h5>Validation</h5>
+      <p>“Seeing my classmates record the same emotions in real time made me realize I'm not alone.”</p>
+    </div>
+    <div class="quote-card">
+      <h5>Connection</h5>
+      <p>“It feels nice knowing that I share a lot of moods with people in the class.”</p>
+    </div>
+    <div class="quote-card">
+      <h5>Ease of use</h5>
+      <p>“A mood map is quicker and more intuitive than the PANAS.”</p>
+    </div>
+    <div class="quote-card">
+      <h5>Measurement tradeoff</h5>
+      <p>“Mood maps are quick and intuitive for capturing real-time, mixed emotions but lack precision and standardization.”</p>
+    </div>
+    <div class="quote-card">
+      <h5>Privacy and comparison</h5>
+      <p>“It can also make people more self-conscious about their own mood.”</p>
+    </div>
+  </div>
+</details>
 
 ---
 
 ## Outcomes & Reflection
 - The digital prototype has been adopted into Flourish Science’s internal product ecosystem and is being prepared for public integration.  
-- By combining iterative usability testing with psychological theories, *Mood Map* turned a conceptual framework into a functional, user-centered tool and demonstrated how theory-informed design and make emotional reflection both intuitive and shareable.  
-- Future updates will include onboarding guidance to help users better understand the logic behind the Circumplex model of emotion. In addition, more testing will be done in group settings (e.g. morning check-ins or icebreaking) to evaluate the potential of Mood Map for promoting social connection and emotional bonding.
+- A classroom deployment with 42 psychology students showed that Mood Map’s key strengths are its real-time, visual, and socially connective experience. Students found it quick and intuitive, and many said the shared view helped them feel validated or less alone in their emotions.
+- Student feedback also clarified Mood Map’s tradeoffs: compared with validated surveys like PANAS, it may be less precise, less standardized, and more vulnerable to privacy concerns or social comparison. This positions Mood Map as a lightweight tool for group check-ins and emotional awareness, rather than a replacement for formal psychological measurement.
+- Future iterations could consider refining onboarding instructions and adding features including privacy controls to enhance anonymity, and support for logging mixed-emotional states.
 
 ---
 
