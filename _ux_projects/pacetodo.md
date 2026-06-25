@@ -2,7 +2,7 @@
 title: "UX Research for PaceTodo"
 type: "UX Research"
 year: 2022
-order: 2
+order: 4
 tags: ["UX Research", "Data Analysis", "Product Design", "Figma"]
 status: "Completed"
 status_color: "#10b981"   # green

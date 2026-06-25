@@ -2,7 +2,7 @@
 title: "Social Media Comment Map"
 type: "Data Science"
 year: 2026
-order: 0
+order: 1
 tags: ["Computational Social Science", "NLP", "Social Media", "Python", "Typescript"]
 status: "Ongoing"
 status_color: "#f59e0b"   # orange

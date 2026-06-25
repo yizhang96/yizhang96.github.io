@@ -11,7 +11,7 @@ summary: "How do people seek and receive support online? This project uses Reddi
 link: "/projects/reddit-empathy/"
 links:
   poster: "/assets/pdf/reddit-empathy-poster.pdf"
-  research report: "/assets/pdf/reddit-empathy-report.pdf"
+  report: "/assets/pdf/reddit-empathy-report.pdf"
 ---
 
 <section class="case-hero reddit-case-hero">

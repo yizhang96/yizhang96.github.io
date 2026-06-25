@@ -1,11 +1,11 @@
 ---
 title: "Mood Map"
 type: "UX Research"
-year: 2024
+year: 2025
 order: 1
 tags: ["UX Research", "UX Design", "React", "Typescript", "SQL"]
-status: "Ongoing"
-status_color: "#f59e0b"   # orange
+status: "Completed"
+status_color: "#10b981"   # green
 thumb: "/assets/image/project-cards/mood-map.png"
 summary: "An interactive emotion visualization tool that helps users reflect on and share their emotional states."
 link: "/project_mood-map"
