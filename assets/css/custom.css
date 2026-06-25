@@ -483,11 +483,26 @@
 }
 
 .workflow-rail div {
-  padding: 13px 14px;
+  padding: 13px 14px 14px;
   border-left: 4px solid #a63114;
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+
+.workflow-rail .workflow-step {
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 9px;
+  border-radius: 50%;
+  background: #a63114;
+  color: #fff;
+  font-size: .8rem;
+  font-weight: 800;
+  line-height: 1;
 }
 
 .workflow-rail strong {

@@ -10,7 +10,6 @@ thumb: "/assets/image/reddit-empathy/support-flow-sankey.png"
 summary: "How do people seek and receive support online? This project uses Reddit conversations to examine whether commenters adapt their responses to what posters are asking for, and whether better-matched support leads to more positive replies from the original poster."
 link: "/projects/reddit-empathy/"
 links:
-  poster: "/assets/pdf/reddit-empathy-poster.pdf"
   report: "/assets/pdf/reddit-empathy-report.pdf"
 ---
 
@@ -42,7 +41,7 @@ links:
   </div>
 </section>
 
-## Project Snapshot
+## Project overview
 
 <div class="case-snapshot-grid">
   <div class="case-snapshot-card">
@@ -63,9 +62,15 @@ links:
   </div>
 </div>
 
-## Core Idea
+---
 
-What constitutes successful social support online? Rather than treating empathic support as a property of one comment in isolation, this project models support as a three-part exchange.
+## Modeling the dynamics of online social support
+
+What constitutes successful social support online? Previous work tends to focus on the language of the support-provider and has identified a wide range of factors associated with effective support, including linguistic synchrony (Doré & Morris, 2018), use of specific pronounds (e.g., "you" rather than "I"; Munin et al., 2025; Alghamdi et al., 2025), and templates of empathy, including validation, paraphrasing, and reappraisal (Gueorguieva et al., 2026).
+
+However, when people seek support online, they are not all asking for the same thing: some want advice, validation, sensemaking, or space to disclose emotion. We know less about whether support providers adapt these tactics to what the seeker appears to need, and whether this fit predicts how support is received by the seeker.
+
+Rather than treating social support as a property of one comment in isolation, this project models support as a three-part exchange.
 
 <div class="interaction-flow" aria-label="Research logic from support seeking to response strategy to OP uptake">
   <div>
@@ -90,17 +95,19 @@ What constitutes successful social support online? Rather than treating empathic
   <figcaption class="deployment-caption">Interactive Sankey chart from the analysis report, showing how support-seeking needs connect to response strategies and OP uptake in the annotated sample.</figcaption>
 </figure>
 
-## LLM Annotation Workflow
+---
 
-The main methodological contribution is a human-in-the-loop annotation workflow for complex social interaction data. I used the LLM to scale annotation, but kept the codebook, validation, and interpretation grounded in social support theory and human review.
+## LLM annotation workflow
+
+To model support-seeking and provision in naturalistic conversations. I used human annotation with LLM-assistance: I created a gold set containing the key construct labels and, after validation, used LLM to scale annotation to all 2765 posts/comments.
 
 <div class="workflow-rail">
-  <div><strong>Raw conversations</strong><span>Reddit posts, level-1 comments, and OP replies</span></div>
-  <div><strong>Stratified sampling</strong><span>OP-replied, high-engagement, question-like, and information-rich cases</span></div>
-  <div><strong>Codebook design</strong><span>Support-seeking needs, response strategies, and OP uptake</span></div>
-  <div><strong>GPT-5-mini annotation</strong><span>Multi-label codes for each interaction unit</span></div>
-  <div><strong>Human audit</strong><span>Manual checks against a gold-standard subset</span></div>
-  <div><strong>Modeling and visualization</strong><span>Mixed-effects models, LIWC checks, and communication figures</span></div>
+  <div><span class="workflow-step">1</span><strong>Raw conversations</strong><span>Reddit posts, level-1 comments, and OP replies</span></div>
+  <div><span class="workflow-step">2</span><strong>Stratified sampling</strong><span>OP-replied, high-engagement, question-like, and information-rich cases</span></div>
+  <div><span class="workflow-step">3</span><strong>Codebook design</strong><span>Support-seeking needs, response strategies, and OP uptake</span></div>
+  <div><span class="workflow-step">4</span><strong>GPT-5-mini annotation</strong><span>Multi-label codes for each interaction unit</span></div>
+  <div><span class="workflow-step">5</span><strong>Human audit</strong><span>Manual checks against a gold-standard subset</span></div>
+  <div><span class="workflow-step">6</span><strong>Modeling and visualization</strong><span>Mixed-effects models, LIWC checks, and communication figures</span></div>
 </div>
 
 <table class="case-table">
@@ -130,75 +137,72 @@ The main methodological contribution is a human-in-the-loop annotation workflow 
   </tbody>
 </table>
 
+---
 
-## Key Findings
+## Statistical modeling
 
-<div class="insight-grid case-insights">
-  <div class="insight-card">
-    <span class="insight-label strength">Finding 1</span>
-    <h4>Commenters responded to what posters appeared to seek.</h4>
-    <p>Advice-seeking posts received more advice, emotional disclosure received more acknowledgment and validation, and sense-making posts received more interpretation and questions.</p>
-  </div>
-  <div class="insight-card">
-    <span class="insight-label strength">Finding 2</span>
-    <h4>Different response strategies predicted different OP reactions.</h4>
-    <p>Questions predicted answering and elaboration; validation was associated with gratitude and lower pushback; challenge predicted pushback.</p>
-  </div>
-  <div class="insight-card">
-    <span class="insight-label tradeoff">Finding 3</span>
-    <h4>Better-matched support predicted OP uptake.</h4>
-    <p>Specific forms of need-response fit were associated with how original posters replied, especially gratitude, elaboration, and pushback.</p>
-  </div>
-</div>
+I used logistic mixed-effects models to test three linked questions: whether support-seeking needs predicted comment response strategies, whether response strategies predicted OP uptake, and whether specific need-response fit indicators predicted OP gratitude or pushback. Where possible, models accounted for clustering among comments within posts and subreddits, with simpler random-effects structures used when needed for stable model fitting.
 
-<figure class="deployment-figure case-figure">
-  <img src="/assets/image/reddit-empathy/need-response-model-effects.png" alt="Mixed-effects model coefficients showing support-seeking needs predicting comment response strategies">
-  <figcaption class="deployment-caption">Mixed-effects models showed theoretically coherent links between support-seeking needs and response strategies.</figcaption>
-</figure>
+---
 
-<figure class="deployment-figure case-figure">
-  <img src="/assets/image/reddit-empathy/response-uptake-model-effects.png" alt="Mixed-effects model coefficients showing comment response strategies predicting original-poster uptake">
-  <figcaption class="deployment-caption">Response strategies predicted different forms of OP uptake, including answering questions, elaboration, gratitude, and pushback.</figcaption>
-</figure>
+## Key findings
 
-<figure class="deployment-figure case-figure">
-  <img src="/assets/image/reddit-empathy/fit-uptake-model-effects.png" alt="Mixed-effects model odds ratios showing need-response fit predicting original-poster uptake">
-  <figcaption class="deployment-caption">Specific need-response fit indicators predicted OP uptake, helping distinguish different forms of support attunement.</figcaption>
-</figure>
+### Finding 1: Commenters responded to what posters appeared to seek.
 
-<div class="figure-grid">
+Advice-seeking posts received more advice, emotional disclosure received more acknowledgment and validation, and sense-making posts received more interpretation and questions.
+
   <figure class="deployment-figure case-figure">
-    <img src="/assets/image/reddit-empathy/liwc-profile.png" alt="LIWC language profiles by comment response move">
-    <figcaption class="deployment-caption">LIWC profiles provided a descriptive construct check on the LLM-coded response strategies.</figcaption>
+    <img src="/assets/image/reddit-empathy/need-response-model-effects.png" alt="Mixed-effects model coefficients showing support-seeking needs predicting comment response strategies">
+    <figcaption class="deployment-caption">Mixed-effects models showed theoretically coherent links between support-seeking needs and response strategies.</figcaption>
   </figure>
-</div>
 
-## Modeling Details
+### Finding 2: Different response strategies predicted different OP reactions.
 
-<div class="case-two-column">
-  <div>
-    <h3>Statistical approach</h3>
-    <p>I used logistic mixed-effects models where feasible, accounting for clustering among comments within posts and subreddits. Models tested whether support-seeking needs predicted response strategies, whether response strategies predicted OP uptake, and whether specific need-response fit indicators predicted uptake.</p>
-  </div>
-  <div>
-    <h3>Interpretation note</h3>
-    <p>The sample was intentionally enriched for OP replies, gratitude-like uptake, high engagement, question-like comments, and information-rich cases. Findings should be read as patterns within annotated support interactions, not population prevalence estimates for Reddit overall.</p>
-  </div>
-</div>
+Questions predicted answering and elaboration; validation was associated with gratitude and lower pushback; challenge predicted pushback.
 
-## Contribution and Next Steps
+  <figure class="deployment-figure case-figure">
+    <img src="/assets/image/reddit-empathy/response-uptake-model-effects.png" alt="Mixed-effects model coefficients showing comment response strategies predicting original-poster uptake">
+    <figcaption class="deployment-caption">Response strategies predicted different forms of OP uptake, including answering questions, elaboration, gratitude, and pushback.</figcaption>
+  </figure>
 
-Recent work has identified the linguistic markers of successful support (Munin et al., 2025) and the templates people use to express empathy, such as validation, paraphrasing, informational guidance (Gueorguieva et al., 2026), and has examined how social support is received by the support-seeker and their community (Alghamdi et al., 2025) 
+### Finding 3: Better-matched support predicted OP uptake.
 
-However, when people seek support online, they are not all asking for the same thing: some want advice, validation, sensemaking, or space to disclose emotion. We know less about whether support providers adapt these tactics to what the seeker appears to need, and whether this fit predicts how support is received.
+Specific forms of need-response fit were associated with how original posters replied. For example, advice-seeking posts that received advice and emotional disclosure posts that received acknowledgment or validation predicted more OP gratitude, whereas sense-making posts that received interpretation or questions predicted more OP pushback.
 
-This project helps bridge this gap by simultaneously modeling three components of online social support: what the OP appears to seek, what the commenter provides, and how the OP responds. This makes it possible to study support *fit* rather than treating empathy as a stand-alone property of a single reply.
+  <figure class="deployment-figure case-figure">
+    <img src="/assets/image/reddit-empathy/fit-uptake-gratitude-pushback.png" alt="Mixed-effects model coefficients showing need-response fit predicting original-poster gratitude and pushback">
+    <figcaption class="deployment-caption">Specific need-response fit indicators predicted OP gratitude and pushback in the mixed-effects models.</figcaption>
+  </figure>
+
+### Cross-checking the meaning of support comments with LIWC
+
+LIWC results showed that different response categories had distinct language profiles. For example, emotional acknowledgment, advice, questions, interpretation, validation, and self-disclosure differed in their overall tone, as well as the use of affective, cognitive, social, and self-focused words. This provides a descriptive check that the annotation labels capture meaningful differences in how people provide support.
+
+<figure class="deployment-figure case-figure">
+  <img src="/assets/image/reddit-empathy/liwc-profile.png" alt="LIWC language profiles by comment response move">
+  <figcaption class="deployment-caption">The LLM-coded response strategies differed in overall tone.</figcaption>
+</figure>
+
+<figure class="deployment-figure case-figure">
+  <img src="/assets/image/reddit-empathy/liwc-correlation-heatmap.png" alt="Heatmap of correlations between LIWC linguistic features and comment response categories">
+  <figcaption class="deployment-caption">The response strategies showed distinct patterns of association with LIWC features</figcaption>
+</figure>
+
+---
+
+## Contribution and next steps
+
+Unlike past work, which tends to focus primarily on the support message and their effectiveness, the present project simultaneously models three components of online social support: what the OP appears to seek, what the commenter provides, and how the OP responds. This makes it possible to study support *fit* rather than treating empathy as a stand-alone property of a single reply.
 
 The next research step is to finish the remaining annotations, expand the human validation sample, and decide which labels are reliable enough for final confirmatory analyses. For the public website, the next design step is to refine the interactive flow visualization and add a short de-identified example explorer that shows how one post-comment-reply unit receives its labels.
+
+---
 
 ## References
 
 Alghamdi, Z., Kumarage, T., Agrawal, G., Karami, M., Almuteb, I., & Liu, H. (2025). RedditESS: A Mental Health Social Support Interaction Dataset -- Understanding Effective Social Support to Refine AI-Driven Support Tools. *arXiv*. https://arxiv.org/abs/2503.21888
+
+Doré, B. P., & Morris, R. R. (2018). Linguistic synchrony predicts the immediate and lasting impact of text-based emotional support. Psychological Science, 29(10), 1716-1723.
 
 Gueorguieva, E., Zhan, H., Suh, J., Hernandez, J., Lau, T., Li, J. J., & Ong, D. C. (2026). AI generates well-liked but templatic empathic responses. *arXiv*. https://arxiv.org/abs/2604.08479
 
