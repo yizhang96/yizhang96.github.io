@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Writing
+nav_order: 4
 ---
 
 {%- assign items = site.writings | sort: "date" | reverse -%}

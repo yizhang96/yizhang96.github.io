@@ -524,6 +524,20 @@
   font-weight: 800;
 }
 
+.eval-failure-table {
+  font-size: .82rem;
+  line-height: 1.42;
+}
+
+.eval-failure-table th,
+.eval-failure-table td {
+  padding: 8px 10px;
+}
+
+.eval-failure-table th {
+  font-weight: 700;
+}
+
 .case-note {
   margin: 18px 0 26px;
   padding: 13px 15px;

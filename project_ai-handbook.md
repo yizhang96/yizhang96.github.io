@@ -14,10 +14,11 @@ title: AI Handbook Assistant
 * [Background](#background)
 * [An AI solution](#an-ai-solution)
 * [Product demo](#product-demo)
-* [Evaluation (in progress)](#evaluation-in-progress)
+* [Evaluation: Round 1 findings](#evaluation-round-1-findings)
 * [Summary & next steps](#summary--next-steps)
 * [Resources](#resources)
 
+---
 
 ## Project overview
 
@@ -25,7 +26,9 @@ title: AI Handbook Assistant
 
 **Solution:** I built a RAG-based AI Handbook Assistant that answers student questions about degree requirements using retrieved handbook text, citations, and concrete suggestions.
 
-**Outcomes:** Intital evaluation showed that the product produces high-quality, evidence-based responses 60% of the time, and identified low retrieval accuracy as a major failure mode. Refinement and additional evaluation are currently underway. 
+**Outcomes:** Initial evaluation showed the assistant answered 14/25 cases appropriately and revealed retrieval accuracy—not response generation—as the primary failure mode.
+
+---
 
 ## Background
 
@@ -33,11 +36,13 @@ title: AI Handbook Assistant
 
 The USC Psychology PhD program has over 100 students, each navigating different course requirements, annual milestones, committee rules, and other degree requirements.
 
-To make this information accessible, the department maintains an annually updated graduate handbook to serve as the official reference point for many high-stake student decisions, from research planning to navigating relationship with advisors, to submitting the right documents to meet graduation requirements.
+To make this information accessible, the department maintains an annually updated graduate handbook to serve as the official reference point for many high-stake student decisions, from research planning to navigating relationships with advisors, to submitting the right documents to meet graduation requirements.
+
+---
 
 ### The problem
 
-In practice, however, the handbook has often been a source of confusion. In a survey of 74 Psychology PhD students, about 40% explicitly considered the department milestones and requirements to be unclear. Open-ended responses further suggested that lack of clarity in the Hanbook was a major cause of confusion: it contained apparently conflicting information, vague language, and with 50 pages and over 17,000 words, students often have trouble locating the right section for their needs.
+In practice, however, the handbook has often been a source of confusion. In a survey of 74 Psychology PhD students, about 40% explicitly considered the department milestones and requirements to be unclear. Open-ended responses further suggested that lack of clarity in the Handbook was a major cause of confusion: it contained apparently conflicting information, vague language, and with 50 pages and over 17,000 words, students often have trouble locating the right section for their needs.
 
 <div class="deployment-figure case-figure">
   <img src="/assets/image/ai-handbook/town_hall_survey_results.png" alt="Survey results showing student perceptions of clarity around department milestones and requirements">
@@ -46,13 +51,15 @@ In practice, however, the handbook has often been a source of confusion. In a su
 
 Due to these frictions, support often shifts to one-on-one appointments with department administrators or informal conversations with senior classmates. Both are useful, but neither fully solves the access problem: appointments may not provide immediate support, while peer advice can be unstructured, incomplete, or outdated.
 
+---
+
 ## An AI solution
 
 To address this gap, I built a RAG-based AI Handbook Assistant that lets students ask customized questions about PhD requirements and receive concise answers grounded in the original handbook. The goal is to provide information and support tailored to each student's needs, and help them decide who to ask next when a situation is ambiguous.
 
 ### Design priorities
 
-Given the often high-stakes nature of students' questions, an AI handbook assistant needs to do more than produce a plausible answer. It needs to answer from an identifiable source of truth, make the original evidence easy to verify, and acknowledge uncertainty when the handbook language is ambiguous. I therefore defined the following design priorities, which differentiate the product from a general-purpose AI chatbot that relies on broad model knowledge and does not provide detailed citation references.
+Given the often high-stake nature of students' questions, an AI handbook assistant needs to do more than produce a plausible answer. It needs to answer from an identifiable source of truth, make the original evidence easy to verify, and acknowledge uncertainty when the handbook language is ambiguous. I therefore defined the following design priorities, which differentiate the product from a general-purpose AI chatbot that relies on broad model knowledge and does not provide detailed citation references.
 
 <div class="case-snapshot-grid case-insights">
   <div class="case-snapshot-card">
@@ -77,6 +84,8 @@ The system parses the handbook into sections and stores each section as an embed
   <img src="/assets/image/ai-handbook/rag_design.png" alt="RAG workflow diagram showing handbook preprocessing, student query matching, hybrid retrieval, and response generation">
   <p class="deployment-caption">RAG workflow for the AI Handbook Assistant.</p>
 </div>
+
+---
 
 ## Product demo
 
@@ -145,11 +154,13 @@ The system parses the handbook into sections and stores each section as an embed
   </div>
 </div>
 
-## Evaluation (in progress)
+---
 
-To evaluate the product's performance, I created a case-level evaluation set including questions that frequently come up in past conversations, including questions about qualifying exams, advisor changes, program extension, international student enrollment rules, dissertation committees, and leave policies. I also included boundary case questions for which the Handbook does not provide a clear answer, to test if the AI will correctly guide the student to contact department admin, rather than providing a high-confidence response. 
+## Evaluation: Round 1 findings
 
-The initial evaluation round focused on four metrics:
+To evaluate performance, I created an evaluation set including questions that frequently come up in past conversations, including questions about qualifying exam and dissertation requirements, course offering, program extension, and international student enrollment rules. I also included boundary cases where the Handbook does not give a clear answer, to test whether the AI would appropriately direct students to department staff instead of giving an overly confident response.
+
+In high-stakes advising, a good answer must not only be correct, but also be verifiable, uncertainty-aware, and actionable. Accordingly, my initial evaluation round focused on the following metrics:
 
 <div class="case-snapshot-grid">
   <div class="case-snapshot-card">
@@ -170,8 +181,36 @@ The initial evaluation round focused on four metrics:
   </div>
 </div>
 
-Overall, the prototype answered a majority of the questions (60%, or 15/25) appropriately. Among the inappropriate response, **the most common failure mode was *retrieval error* (7/10)**: when the traget section was short, tthe RAG system tends to retrieve longer, broad sections, and although correct candidates may appeared in the top results, they were often dropped before answer generation.
+In the first evaluation round, the prototype produced good answers for **14 of 25 cases**, partial but directionally useful answers for **7 cases**, and failed or substantively wrong answers for **4 cases**. The main failure mode involved retrieval and ranking rather than answer generation: when the correct handbook section was selected, the generated answer was usually reasonable, but some precise policy sections were outranked or filtered out before generation.
 
+<table class="case-table eval-failure-table">
+  <thead>
+    <tr>
+      <th>Failure mode</th>
+      <th>Definition</th>
+      <th>Product implication / next fix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Wrong section retrieved</td>
+      <td>The system selected a broad or adjacent handbook section instead of the section that directly answered the question.</td>
+      <td>Split large handbook chunks and prioritize passage-level matches.</td>
+    </tr>
+    <tr>
+      <td>Relevant evidence filtered out</td>
+      <td>The right source appeared during retrieval, but was removed before the answer was generated.</td>
+      <td>Fine-tune threshold for keeping vs. dropping candidate sections before answer generation.</td>
+    </tr>
+    <tr>
+      <td>Student wording under-modeled</td>
+      <td>The system missed connections between everyday student language (e.g., "quals") and formal handbook terminology ("qualifying exam").</td>
+      <td>Add dictionary for common shorthand, synonyms, and insider phrases before retrieval.</td>
+    </tr>
+  </tbody>
+</table>
+
+---
 
 ## Summary & next steps
 
@@ -181,7 +220,7 @@ What can we take away from this project? In AI-mediated advising, a helpful answ
 
 **Gather real user feedback:** I will deploy the product with current PhD students in the department and ask them to test it with questions from different program stages, helping ensure the assistant is reliable in real use settings.
 
-**Collaborate with department administration:** After further validation, I will work with USC Psychology administrative staff to scale the tool to all PhD students, with the goal of reducing friction for students and lowering repetitive advising workload for staff.  
+**Collaborate with department administration:** After further validation, I will work with USC Psychology administrative staff to explore whether the tool could reduce repetitive first-pass advising questions, reducing friction for students and lowering repetitive advising workload for staff.  
 
 ## Resources
 

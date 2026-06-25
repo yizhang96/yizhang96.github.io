@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Research projects
+nav_order: 2
 ---
 
 <div class="projects-grid" id="projectsGrid">

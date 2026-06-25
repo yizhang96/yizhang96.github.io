@@ -1,10 +1,11 @@
 ---
 layout: page
-title: UX & data projects
+title: AI & UX projects
+nav_order: 3
 ---
 
 <div>
-Here are some projects beyond my research at USC. Using mixed methods, I hope to create products that help people better understand themselves and make more adaptive decisions.
+Selected projects applying behavioral science, UX research, data analysis, and AI prototyping to design tools for reflection, learning, social understanding, and decision-making.
 </div>
 
 {%- assign items = site.ux_projects | sort: "order" -%}
