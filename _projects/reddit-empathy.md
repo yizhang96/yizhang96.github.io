@@ -192,9 +192,9 @@ LIWC results showed that different response categories had distinct language pro
 
 ## Contribution and next steps
 
-Unlike past work, which tends to focus primarily on the support message and their effectiveness, the present project simultaneously models three components of online social support: what the OP appears to seek, what the commenter provides, and how the OP responds. This makes it possible to study support *fit* rather than treating empathy as a stand-alone property of a single reply.
+Unlike past work, which tends to focus primarily on the support message and their effectiveness, the present project simultaneously models three components of online social support: what support-seekers ask for, what the commenter provides, and how the support-seeker. This makes it possible to study support *fit* rather than treating empathy as a stand-alone property of a single reply.
 
-The next research step is to finish the remaining annotations, expand the human validation sample, and decide which labels are reliable enough for final confirmatory analyses. For the public website, the next design step is to refine the interactive flow visualization and add a short de-identified example explorer that shows how one post-comment-reply unit receives its labels.
+As a next step, I plan to scale the annotation to the full dataset after further validation. Additionally, the current dataset provides a useful human baseline for social support provision and can contribute to the evaluation of LLMs in providing goal-sensitive, calibrated social support in online settings.
 
 ---
 
