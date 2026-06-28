@@ -5,7 +5,7 @@ title: AI Handbook Assistant
 
 **Role:** Full-stack developer, AI evaluation researcher  
 **Duration:** February 2026 – Present  
-**Tools:** Retrieval-augmented generation (RAG); LLM embedding  
+**Tools:** RAG; embedding; AI evaluation rubric; failure-mode analysis
 
 ---
 
@@ -14,7 +14,7 @@ title: AI Handbook Assistant
 * [Background](#background)
 * [An AI solution](#an-ai-solution)
 * [Product demo](#product-demo)
-* [Evaluation: Round 1 findings](#evaluation-round-1-findings)
+* [Round 1 evaluation](#round-1-evaluation)
 * [Summary & next steps](#summary--next-steps)
 * [Resources](#resources)
 
@@ -24,9 +24,9 @@ title: AI Handbook Assistant
 
 **Problem:** PhD students often struggle to interpret complex degree policies and find the current handbook insufficient for quickly answering situation-specific questions.
 
-**Solution:** I built a RAG-based AI Handbook Assistant that answers student questions about degree requirements using retrieved handbook text, citations, and concrete suggestions.
+**Solution:** I built a RAG-based AI Handbook Assistant that answers students' questions about program requirements with concrete suggestions and citations. I also developed an evaluation workflow based on 25 questions and a six-dimension quality rubric.
 
-**Outcomes:** Initial evaluation showed the assistant answered 14/25 cases appropriately and revealed retrieval accuracy—not response generation—as the primary failure mode.
+**Outcomes:** Initial evaluation showed 13 passing answers, 4 partially acceptable answers, and 8 failures out of 25 questions, with most failures coming from incorrect retrieval of evidence, rather than the quality of generated answer.
 
 ---
 
@@ -34,7 +34,7 @@ title: AI Handbook Assistant
 
 ### A handbook for psychology students
 
-The USC Psychology PhD program has over 100 students, each navigating different course requirements, annual milestones, committee rules, and other degree requirements.
+The USC Psychology PhD program has over 100 students across six academic areas. Each area has different course requirements, program milestones, and degree timelines.
 
 To make this information accessible, the department maintains an annually updated graduate handbook to serve as the official reference point for many high-stake student decisions, from research planning to navigating relationships with advisors, to submitting the right documents to meet graduation requirements.
 
@@ -42,24 +42,24 @@ To make this information accessible, the department maintains an annually update
 
 ### The problem
 
-In practice, however, the handbook has often been a source of confusion. In a survey of 74 Psychology PhD students, about 40% explicitly considered the department milestones and requirements to be unclear. Open-ended responses further suggested that lack of clarity in the Handbook was a major cause of confusion: it contained apparently conflicting information, vague language, and with 50 pages and over 17,000 words, students often have trouble locating the right section for their needs.
+In practice, however, the handbook has often been a source of confusion. In a recent survey of 74 Psychology PhD students, about 40% explicitly considered the department milestones and requirements to be unclear. Open-ended responses further suggested that **lack of clarity in the Handbook** was a major cause of confusion: it contained apparently conflicting information, vague language, and with 50 pages and over 17,000 words, students often have trouble locating the right section for their needs.
 
 <div class="deployment-figure case-figure">
   <img src="/assets/image/ai-handbook/town_hall_survey_results.png" alt="Survey results showing student perceptions of clarity around department milestones and requirements">
   <p class="deployment-caption">Survey results from 74 Psychology PhD students based on 2026 Town Hall survey</p>
 </div>
 
-Due to these frictions, support often shifts to one-on-one appointments with department administrators or informal conversations with senior classmates. Both are useful, but neither fully solves the access problem: appointments may not provide immediate support, while peer advice can be unstructured, incomplete, or outdated.
+Due to these frictions, students often have to seek support from one-on-one appointments with department administrators or informal conversations with senior classmates. Both are useful, but neither fully solves the access problem: appointments may not provide immediate support, while peer advice can be unstructured, incomplete, or outdated.
 
 ---
 
 ## An AI solution
 
-To address this gap, I built a RAG-based AI Handbook Assistant that lets students ask customized questions about PhD requirements and receive concise answers grounded in the original handbook. The goal is to provide information and support tailored to each student's needs, and help them decide who to ask next when a situation is ambiguous.
+To address this gap, I built a RAG-based AI Handbook Assistant that lets students ask customized questions about PhD requirements and receive answers grounded in the original handbook. The goal is to provide information and support tailored to each student's needs, and help them decide who to ask next when a situation is ambiguous.
 
 ### Design priorities
 
-Given the often high-stake nature of students' questions, an AI handbook assistant needs to do more than produce a plausible answer. It needs to answer from an identifiable source of truth, make the original evidence easy to verify, and acknowledge uncertainty when the handbook language is ambiguous. I therefore defined the following design priorities, which differentiate the product from a general-purpose AI chatbot that relies on broad model knowledge and does not provide detailed citation references.
+Given the high-stake nature of students' inquiries, an AI handbook assistant needs to do more than produce a plausible answer. It needs to answer from an identifiable source of truth, make the original evidence easy to verify, and acknowledge uncertainty when the handbook language is ambiguous. Accordingly, I defined the following design priorities:
 
 <div class="case-snapshot-grid case-insights">
   <div class="case-snapshot-card">
@@ -71,8 +71,8 @@ Given the often high-stake nature of students' questions, an AI handbook assista
     <p>The interface distinguishes direct support, interpretation, and missing information instead of making every answer sound equally certain.</p>
   </div>
   <div class="case-snapshot-card">
-    <h3>Escalation built in</h3>
-    <p>For high-stakes decisions, the assistant nudges students to confirm with the program administrator, DGS, advisor, or area head.</p>
+    <h3>Role boundaries</h3>
+    <p>It should not replace academic advising. For high-stakes decisions, the assistant nudges students to confirm with the program administrator, instead of providing definitive answers</p>
   </div>
 </div>
 
@@ -108,24 +108,26 @@ The system parses the handbook into sections and stores each section as an embed
     <div class="handbook-answer-card">
       <h4>Answer</h4>
       <p>
-        The full qualifying exam should be completed by the last day of classes of the 7th semester. If the exam is not completed on time, the student may be placed on warning status and should confirm the exact consequence with their Area Head or program administrator.
+        The full qualifying exam is due by the last day of classes of the 7th semester. Missing that deadline may place a student on warning status, with the usual remedy being completion by the end of the 8th semester.
       </p>
       <p>
-        If a qualifying exam or part of it is failed, the committee may allow a retake within 1-6 months. Students cannot take the qualifying exam more than twice, and must be enrolled during the term of any retake.
+        If the exam or part of it is failed, the committee may allow a retake within 1-6 months. Students cannot take the qualifying exam more than twice and must be enrolled during any retake term.
       </p>
       <h4>Suggested next step</h4>
       <p>
-        Contact your guidance committee and program administrator now to confirm your deadline, standing, and whether any area-specific policy applies.
+        Confirm your standing, retake options, and any area-specific policy with your guidance committee and program administrator.
       </p>
     </div>
 
     <details class="handbook-demo-details">
       <summary>
         <span>How this answer is supported</span>
-        <small>3 stated points · 1 uncertainty note</small>
+        <small>5 stated points · 1 uncertainty note</small>
       </summary>
       <div class="handbook-evidence-list">
         <p><strong>Deadline:</strong> The entire qualifying exam must be completed no later than the last day of classes of the 7th semester. <a>S1 · p. 15</a></p>
+        <p><strong>Warning status:</strong> Not completing the qualifying exam by that deadline is listed as a reason for warning status. <a>S2 · p. 11</a></p>
+        <p><strong>Return to good standing:</strong> The listed remedy is to pass the qualifying exam by the last day of classes of the 8th semester, or pass a re-examination within 6 months if offered. <a>S2 · p. 12</a></p>
         <p><strong>Retake limit:</strong> A student may not take the qualifying exam more than twice. <a>S1 · p. 16</a></p>
         <p><strong>Enrollment:</strong> If not otherwise enrolled, the student must enroll in GRSC 800abz during the term of a retake. <a>S1 · p. 16</a></p>
         <p><strong>Uncertainty:</strong> Some consequences may depend on specialty-area rules, so students should confirm with the program administrator or Area Head.</p>
@@ -134,7 +136,7 @@ The system parses the handbook into sections and stores each section as an embed
 
     <details class="handbook-demo-details">
       <summary>
-        <span>Sources (1)</span>
+        <span>Sources (2)</span>
         <small>Original handbook language</small>
       </summary>
       <div class="handbook-source-card">
@@ -150,38 +152,101 @@ The system parses the handbook into sections and stores each section as an embed
           "may not take the qualifying examination more than twice"
         </blockquote>
       </div>
+      <div class="handbook-source-card">
+        <div class="handbook-source-meta">
+          <span>S2</span>
+          <strong>G. Warning Status and Termination</strong>
+          <em>pp. 11-13</em>
+        </div>
+        <blockquote>
+          "students are considered to be on warning status if... they did not successfully complete the Ph.D. qualifying examination"
+        </blockquote>
+        <blockquote>
+          "take and pass the qualifying examination by the last day of classes of the eighth semester"
+        </blockquote>
+      </div>
     </details>
   </div>
 </div>
 
 ---
 
-## Evaluation: Round 1 findings
+## Round 1 evaluation
 
+### Evaluation rubric
 To evaluate performance, I created an evaluation set including questions that frequently come up in past conversations, including questions about qualifying exam and dissertation requirements, course offering, program extension, and international student enrollment rules. I also included boundary cases where the Handbook does not give a clear answer, to test whether the AI would appropriately direct students to department staff instead of giving an overly confident response.
 
-In high-stakes advising, a good answer must not only be correct, but also be verifiable, uncertainty-aware, and actionable. Accordingly, my initial evaluation round focused on the following metrics:
+Each question-response pair was evaluated based on a **six-dimension rubric**, with each dimension scored on a 0-2 scale:
 
 <div class="case-snapshot-grid">
   <div class="case-snapshot-card">
-    <h3>Answer quality</h3>
-    <p>Is the answer unacceptable, acceptable but improvable, or good?</p>
+    <h3>Answer correctness</h3>
+    <p>Does the answer match the handbook policy and include important limits or exceptions?</p>
   </div>
   <div class="case-snapshot-card">
-    <h3>Evidence grounding</h3>
-    <p>Can the answer be traced back to original handbook text?</p>
+    <h3>Citation quality</h3>
+    <p>Are the answer claims traceable to relevant handbook passages?</p>
   </div>
   <div class="case-snapshot-card">
-    <h3>Uncertainty handling</h3>
-    <p>Does the assistant say when the evidence is insufficient?</p>
+    <h3>Uncertainty calibration</h3>
+    <p>Does the assistant acknowledge uncertainty when the evidence is weak, incomplete, or missing?</p>
   </div>
   <div class="case-snapshot-card">
-    <h3>Action quality</h3>
-    <p>Does it recommend the right next contact, such as an advisor, department administrator, or international student office?</p>
+    <h3>Actionability</h3>
+    <p>Does it recommend a useful next step or the right person to contact?</p>
+  </div>
+  <div class="case-snapshot-card">
+    <h3>Role boundary</h3>
+    <p>Does it avoid acting beyond its role or implying it can make decisions on the student's behalf?</p>
+  </div>
+  <div class="case-snapshot-card">
+    <h3>Clarity & readability</h3>
+    <p>Is the answer concise, structured, and easy for students to understand?</p>
   </div>
 </div>
 
-In the first evaluation round, the prototype produced good answers for **14 of 25 cases**, partial but directionally useful answers for **7 cases**, and failed or substantively wrong answers for **4 cases**. The main failure mode involved retrieval and ranking rather than answer generation: when the correct handbook section was selected, the generated answer was usually reasonable, but some precise policy sections were outranked or filtered out before generation.
+Scores on these dimensions were then synthesized to make a final pass/partial/fail judgment, with some dimensions more important than others. For example, incorrect conclusions or unsupported claims would lead to automatic failure even when an answer was otherwise clear or useful.
+
+### Evaluation results
+
+In the first evaluation round, the Handbook Assistant produced **13 passing**, **4 partially acceptable**, and **8 failed** answers. The assistant performed best on role boundaries, clarity, and actionability, but struggled most with answer correctness and evidence quality.
+
+<div class="eval-profile">
+  <h3>Round 1 average scores</h3>
+  <div class="eval-profile-row">
+    <span>Role boundary</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 92%;"></div></div>
+    <strong>1.84 / 2</strong>
+  </div>
+  <div class="eval-profile-row">
+    <span>Clarity & readability</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 86%;"></div></div>
+    <strong>1.72 / 2</strong>
+  </div>
+  <div class="eval-profile-row">
+    <span>Actionability</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 82%;"></div></div>
+    <strong>1.64 / 2</strong>
+  </div>
+  <div class="eval-profile-row">
+    <span>Uncertainty calibration</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill mid" style="--w: 76%;"></div></div>
+    <strong>1.52 / 2</strong>
+  </div>
+  <div class="eval-profile-row">
+    <span>Answer correctness</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill low" style="--w: 68%;"></div></div>
+    <strong>1.36 / 2</strong>
+  </div>
+  <div class="eval-profile-row">
+    <span>Citation quality</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill low" style="--w: 64%;"></div></div>
+    <strong>1.28 / 2</strong>
+  </div>
+  <p class="eval-profile-caption">Average score for each rubric dimension across 25 questions, using a 0-2 scale.</p>
+</div>
+
+Further review of the logs suggested that most failures happened at the **retrieval stage**: When retrieval was correct, the assistant usually produced high-quality answers; when retrieval was incorrect or incomplete, it sometimes produced plausible but misleading guidance.
 
 <table class="case-table eval-failure-table">
   <thead>
@@ -193,19 +258,24 @@ In the first evaluation round, the prototype produced good answers for **14 of 2
   </thead>
   <tbody>
     <tr>
-      <td>Wrong section retrieved</td>
-      <td>The system selected a broad or adjacent handbook section instead of the section that directly answered the question.</td>
-      <td>Split large handbook chunks and prioritize passage-level matches.</td>
+      <td>Retrieval incorrect or incomplete</td>
+      <td>The system failed to retrieve the most relevant handbook section</td>
+      <td>Improve chunking and retrieval ranking algorithms.</td>
     </tr>
     <tr>
-      <td>Relevant evidence filtered out</td>
-      <td>The right source appeared during retrieval, but was removed before the answer was generated.</td>
-      <td>Fine-tune threshold for keeping vs. dropping candidate sections before answer generation.</td>
+      <td>Unsupported inference</td>
+      <td>The system made conclusions without enough direct support from the retrieved evidence.</td>
+      <td>Require key claims to cite direct evidence, and fall back to uncertainty when support is weak.</td>
     </tr>
     <tr>
-      <td>Student wording under-modeled</td>
-      <td>The system missed connections between everyday student language (e.g., "quals") and formal handbook terminology ("qualifying exam").</td>
-      <td>Add dictionary for common shorthand, synonyms, and insider phrases before retrieval.</td>
+      <td>Answer was broad and lacked key details</td>
+      <td>The relevant evidence was retrieved, but was buried in the citation list and not included in the main answer.</td>
+      <td>Refine prompts to guarantee the specificity of answers</td>
+    </tr>
+    <tr>
+      <td>Crossed role boundaries</td>
+      <td>The assistant suggested inappropriate actions (e.g., contacting department admin on behalf of the student).</td>
+      <td>Strengthen guardrails around what the assistant can and cannot do for students.</td>
     </tr>
   </tbody>
 </table>
@@ -216,11 +286,11 @@ In the first evaluation round, the prototype produced good answers for **14 of 2
 
 What can we take away from this project? In AI-mediated advising, a helpful answer is not enough. The assistant also needs to show where the answer comes from, acknowledge uncertainty, and guide students toward the right human support when the handbook is ambiguous. Moving forward, I plan to focus on three areas:
 
-**Improve retrieval accuracy:** The next iteration will focus on helping the system find shorter but more relevant handbook sections, especially when broad sections contain overlapping keywords.
+**Improve retrieval and evidence grounding:** The next iteration will focus on helping the system find more relevant handbook sections. I will re-run the evaluation workflow after implementing the proposed changes.
 
-**Gather real user feedback:** I will deploy the product with current PhD students in the department and ask them to test it with questions from different program stages, helping ensure the assistant is reliable in real use settings.
+**Gather real user feedback:** I am deploying the product with current PhD students at different program stages and ask them to test it with more questions, helping ensure the assistant is reliable in real use settings.
 
-**Collaborate with department administration:** After further validation, I will work with USC Psychology administrative staff to explore whether the tool could reduce repetitive first-pass advising questions, reducing friction for students and lowering repetitive advising workload for staff.  
+**Collaborate with department administration:** After further validation and refinement, I will work with USC Psychology administrative staff to explore whether the tool could reduce repetitive first-pass advising questions, reducing friction for students and lowering repetitive advising workload for staff.
 
 ## Resources
 
