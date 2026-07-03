@@ -14,7 +14,7 @@ title: AI Handbook Assistant
 * [Background](#background)
 * [An AI solution](#an-ai-solution)
 * [Product demo](#product-demo)
-* [Round 1 evaluation](#round-1-evaluation)
+* [Evaluation and iteration](#evaluation-and-iteration)
 * [Summary & next steps](#summary--next-steps)
 * [Resources](#resources)
 
@@ -24,9 +24,9 @@ title: AI Handbook Assistant
 
 **Problem:** PhD students often struggle to interpret complex degree policies and find the current handbook insufficient for quickly answering situation-specific questions.
 
-**Solution:** I built a RAG-based AI Handbook Assistant that answers students' questions about program requirements with concrete suggestions and citations. I also developed an evaluation workflow based on 25 questions and a six-dimension quality rubric.
+**Solution:** I built a RAG-based AI Handbook Assistant that answers students' questions about program requirements with concrete suggestions and citations. I also developed an evaluation workflow based on diagnostic and held-out policy questions.
 
-**Outcomes:** Initial evaluation showed 13 passing answers, 4 partially acceptable answers, and 8 failures out of 25 questions, with most failures coming from incorrect retrieval of evidence, rather than the quality of generated answer.
+**Outcomes:** Round 1 showed that the main bottleneck was retrieval and evidence grounding, not answer clarity. After round 2 updates, the rates of acceptable answers increased from 68% to 88% on the original diagnostic set and reached 80% on a held-out test set.
 
 ---
 
@@ -171,7 +171,7 @@ The system parses the handbook into sections and stores each section as an embed
 
 ---
 
-## Round 1 evaluation
+## Evaluation and iteration
 
 ### Evaluation rubric
 To evaluate performance, I created an evaluation set including questions that frequently come up in past conversations, including questions about qualifying exam and dissertation requirements, course offering, program extension, and international student enrollment rules. I also included boundary cases where the Handbook does not give a clear answer, to test whether the AI would appropriately direct students to department staff instead of giving an overly confident response.
@@ -207,7 +207,7 @@ Each question-response pair was evaluated based on a **six-dimension rubric**, w
 
 Scores on these dimensions were then synthesized to make a final pass/partial/fail judgment, with some dimensions more important than others. For example, incorrect conclusions or unsupported claims would lead to automatic failure even when an answer was otherwise clear or useful.
 
-### Evaluation results
+### Round 1 findings
 
 In the first evaluation round, the Handbook Assistant produced **13 passing**, **4 partially acceptable**, and **8 failed** answers. The assistant performed best on role boundaries, clarity, and actionability, but struggled most with answer correctness and evidence quality.
 
@@ -225,7 +225,7 @@ In the first evaluation round, the Handbook Assistant produced **13 passing**, *
   </div>
   <div class="eval-profile-row">
     <span>Actionability</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 82%;"></div></div>
+    <div class="eval-profile-track"><div class="eval-profile-fill mid" style="--w: 82%;"></div></div>
     <strong>1.64 / 2</strong>
   </div>
   <div class="eval-profile-row">
@@ -259,7 +259,7 @@ Further review of the logs suggested that most failures happened at the **retrie
   <tbody>
     <tr>
       <td>Retrieval incorrect or incomplete</td>
-      <td>The system failed to retrieve the most relevant handbook section</td>
+      <td>The system failed to retrieve the most relevant handbook section.</td>
       <td>Improve chunking and retrieval ranking algorithms.</td>
     </tr>
     <tr>
@@ -270,15 +270,57 @@ Further review of the logs suggested that most failures happened at the **retrie
     <tr>
       <td>Answer was broad and lacked key details</td>
       <td>The relevant evidence was retrieved, but was buried in the citation list and not included in the main answer.</td>
-      <td>Refine prompts to guarantee the specificity of answers</td>
+      <td>Refine prompts to guarantee the specificity of answers.</td>
     </tr>
     <tr>
       <td>Crossed role boundaries</td>
-      <td>The assistant suggested inappropriate actions (e.g., contacting department admin on behalf of the student).</td>
+      <td>The assistant suggested inappropriate actions, such as contacting department admin on behalf of the student.</td>
       <td>Strengthen guardrails around what the assistant can and cannot do for students.</td>
     </tr>
   </tbody>
 </table>
+
+### Round 2 update
+
+Based on these findings, I made targeted updates, including normalizing queries (e.g., turning "quals" to "qualifying exam"), refining rules for section retrieval, and refined prompts. I then re-evaluated the product using both the original diagnostic set and a held-out test set.
+
+On the original 25-question diagnostic set, performance improved from **13 to 17 passing answers**, with failures dropping from **8 to 3**. On a 15-question held-out set, the assistant produced **9 passing**, **3 partially acceptable**, and **3 failed** answers.
+
+<div class="eval-profile">
+  <h3>Round 2 average scores</h3>
+  <div class="eval-profile-row">
+    <span>Role boundary</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 100%;"></div></div>
+    <strong>2.00 / 2</strong>
+  </div>
+  <div class="eval-profile-row">
+    <span>Clarity & readability</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 92%;"></div></div>
+    <strong>1.84 / 2</strong>
+  </div>
+  <div class="eval-profile-row">
+    <span>Actionability</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 90%;"></div></div>
+    <strong>1.80 / 2</strong>
+  </div>
+  <div class="eval-profile-row">
+    <span>Uncertainty calibration</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 86%;"></div></div>
+    <strong>1.72 / 2</strong>
+  </div>
+  <div class="eval-profile-row">
+    <span>Answer correctness</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill mid" style="--w: 78%;"></div></div>
+    <strong>1.56 / 2</strong>
+  </div>
+  <div class="eval-profile-row">
+    <span>Citation quality</span>
+    <div class="eval-profile-track"><div class="eval-profile-fill mid" style="--w: 80%;"></div></div>
+    <strong>1.60 / 2</strong>
+  </div>
+  <p class="eval-profile-caption">Average score for each rubric dimension across 25 questions, using a 0-2 scale.</p>
+</div>
+
 
 ---
 
@@ -286,9 +328,9 @@ Further review of the logs suggested that most failures happened at the **retrie
 
 What can we take away from this project? In AI-mediated advising, a helpful answer is not enough. The assistant also needs to show where the answer comes from, acknowledge uncertainty, and guide students toward the right human support when the handbook is ambiguous. Moving forward, I plan to focus on three areas:
 
-**Improve retrieval and evidence grounding:** The next iteration will focus on helping the system find more relevant handbook sections. I will re-run the evaluation workflow after implementing the proposed changes.
+**Further improve retrieval and evidence-grounding:** The next iteration will continue to help the system find more relevant handbook sections. I will re-run the evaluation workflow after implementing the proposed changes.
 
-**Gather real user feedback:** I am deploying the product with current PhD students at different program stages and ask them to test it with more questions, helping ensure the assistant is reliable in real use settings.
+**Gather more student feedback:** I am deploying the product with current PhD students at different program stages and asking them to test it with more questions, helping ensure the assistant is reliable in real use settings.
 
 **Collaborate with department administration:** After further validation and refinement, I will work with USC Psychology administrative staff to explore whether the tool could reduce repetitive first-pass advising questions, reducing friction for students and lowering repetitive advising workload for staff.
 
