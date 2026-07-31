@@ -15,3 +15,6 @@ node_modules/
 # OS/editor junk
 .DS_Store
 *.log
+
+# Local Codex handoff notes
+handoff.md
