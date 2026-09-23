@@ -26,7 +26,7 @@ title: AI Handbook Assistant
 
 **Solution:** I built a RAG-based AI Handbook Assistant that answers students' questions about program requirements with concrete suggestions and citations. I also developed an evaluation workflow based on diagnostic and held-out policy questions.
 
-**Outcomes:** Round 1 showed that the main bottleneck was retrieval and evidence grounding, not answer clarity. After round 2 updates, the rates of acceptable answers increased from 68% to 88% on the original diagnostic set and reached 80% on a held-out test set.
+**Outcomes:** Early evaluation identified retrieval and evidence grounding as the main bottlenecks. After redesigning the system, 27 of 30 responses were fully successful in a held-out evaluation, representing a **90% fully successful response rate**.
 
 ---
 
@@ -78,7 +78,7 @@ Given the high-stake nature of students' inquiries, an AI handbook assistant nee
 
 ### RAG workflow
 
-The system parses the handbook into sections and stores each section as an embedding. When a student asks a question, it uses both query embeddings and keyword matching to retrieve the most relevant handbook chunks. These chunks are then passed to the LLM to generate a concise answer with evidence, page numbers, and citations.
+The system parses the handbook into sections and smaller searchable units. When a student asks a question, it combines keyword matching and semantic similarity to retrieve the most relevant sections, including related policies that may appear elsewhere in the handbook. The language model then identifies the useful evidence and generates a concise answer with citations, page numbers, and suggested next steps.
 
 <div class="deployment-figure case-figure">
   <img src="/assets/image/ai-handbook/rag_design.png" alt="RAG workflow diagram showing handbook preprocessing, student query matching, hybrid retrieval, and response generation">
@@ -205,48 +205,13 @@ Each question-response pair was evaluated based on a **six-dimension rubric**, w
   </div>
 </div>
 
-Scores on these dimensions were then synthesized to make a final pass/partial/fail judgment, with some dimensions more important than others. For example, incorrect conclusions or unsupported claims would lead to automatic failure even when an answer was otherwise clear or useful.
+Scores on these dimensions were then synthesized into a final pass, partial, or fail judgment, with some dimensions carrying more weight than others. Incorrect conclusions or unsupported claims resulted in failure even when an answer was otherwise clear or useful.
 
-### Round 1 findings
+### Round 1: Identifying the main failure
 
 In the first evaluation round, the Handbook Assistant produced **13 passing**, **4 partially acceptable**, and **8 failed** answers. The assistant performed best on role boundaries, clarity, and actionability, but struggled most with answer correctness and evidence quality.
 
-<div class="eval-profile">
-  <h3>Round 1 average scores</h3>
-  <div class="eval-profile-row">
-    <span>Role boundary</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 92%;"></div></div>
-    <strong>1.84 / 2</strong>
-  </div>
-  <div class="eval-profile-row">
-    <span>Clarity & readability</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 86%;"></div></div>
-    <strong>1.72 / 2</strong>
-  </div>
-  <div class="eval-profile-row">
-    <span>Actionability</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill mid" style="--w: 82%;"></div></div>
-    <strong>1.64 / 2</strong>
-  </div>
-  <div class="eval-profile-row">
-    <span>Uncertainty calibration</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill mid" style="--w: 76%;"></div></div>
-    <strong>1.52 / 2</strong>
-  </div>
-  <div class="eval-profile-row">
-    <span>Answer correctness</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill low" style="--w: 68%;"></div></div>
-    <strong>1.36 / 2</strong>
-  </div>
-  <div class="eval-profile-row">
-    <span>Citation quality</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill low" style="--w: 64%;"></div></div>
-    <strong>1.28 / 2</strong>
-  </div>
-  <p class="eval-profile-caption">Average score for each rubric dimension across 25 questions, using a 0-2 scale.</p>
-</div>
-
-Further review of the logs suggested that most failures happened at the **retrieval stage**: When retrieval was correct, the assistant usually produced high-quality answers; when retrieval was incorrect or incomplete, it sometimes produced plausible but misleading guidance.
+Further review showed that most failures occurred during retrieval. When the correct evidence was retrieved, the assistant usually produced a useful and appropriately bounded answer. When retrieval was incomplete, it could produce plausible but misleading guidance.
 
 <table class="case-table eval-failure-table">
   <thead>
@@ -280,45 +245,77 @@ Further review of the logs suggested that most failures happened at the **retrie
   </tbody>
 </table>
 
-### Round 2 update
+### Round 2: Targeted improvements
 
-Based on these findings, I made targeted updates, including normalizing queries (e.g., turning "quals" to "qualifying exam"), refining rules for section retrieval, and refined prompts. I then re-evaluated the product using both the original diagnostic set and a held-out test set.
+Based on these findings, I developed a second version that normalized informal queries, added customized retrieval rules, and refined the answer-generation prompt.
 
-On the original 25-question diagnostic set, performance improved from **13 to 17 passing answers**, with failures dropping from **8 to 3**. On a 15-question held-out set, the assistant produced **9 passing**, **3 partially acceptable**, and **3 failed** answers.
+When evaluated on the same 25 diagnostic questions, passing answers increased from **13 to 17**, while failures decreased from **8 to 3**. Correctness and evidence quality improved, although retrieval remained the primary source of error.
 
-<div class="eval-profile">
-  <h3>Round 2 average scores</h3>
-  <div class="eval-profile-row">
-    <span>Role boundary</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 100%;"></div></div>
-    <strong>2.00 / 2</strong>
+### Final system redesign
+
+I then rebuilt the retrieval workflow to combine multiple keyword and semantic signals, account for relationships between handbook sections, and more carefully control which sources shaped the final answer.
+
+An automated evaluation on an expanded set of 56 development questions found all essential handbook sections for **52 questions**. The generated answers retained the essential evidence for **51 questions**. Because these development answers were not manually scored on the six-dimension rubric, I used a separate held-out set to evaluate the final system's end-to-end answer quality.
+
+### Final held-out evaluation
+
+I evaluated the final system on **30 naturally occurring student questions** that were kept separate from development. Each response was manually scored on correctness, evidence quality, uncertainty calibration, actionability, role boundaries, and clarity.
+
+The system produced **27 fully successful responses (90%)**, **2 partially successful responses**, and **1 unsuccessful response**. It received full marks for role boundaries and scored **96.7% on correctness and uncertainty calibration**. Actionability was the lowest-scoring dimension at **91.7%**, reflecting several answers that were correct but could have offered more precise next steps.
+
+The remaining weaknesses were narrow and interpretable. The unsuccessful response confused two similar degree pathways, while the partially successful responses omitted or understated important procedural details.
+
+<div class="eval-comparison">
+  <h3>Six-dimension scores across evaluation stages</h3>
+  <div class="eval-comparison-legend" aria-label="Evaluation stage legend">
+    <span><i class="round-one"></i>Round 1 diagnostic</span>
+    <span><i class="round-two"></i>Round 2 V2.5 diagnostic</span>
+    <span><i class="final-round"></i>Final held-out</span>
   </div>
-  <div class="eval-profile-row">
-    <span>Clarity & readability</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 92%;"></div></div>
-    <strong>1.84 / 2</strong>
+  <div class="eval-comparison-scale" aria-hidden="true"><span>0</span><span>1</span><span>2</span></div>
+  <div class="eval-comparison-row">
+    <span>Correctness</span>
+    <div class="eval-comparison-track" aria-label="Correctness: Round 1 1.36, Round 2 1.56, final held-out 1.93 out of 2">
+      <i class="eval-dot round-one" style="--x: 68%;"></i><i class="eval-dot round-two" style="--x: 78%;"></i><i class="eval-dot final-round" style="--x: 96.7%;"></i>
+    </div>
+    <strong>1.36 · 1.56 · 1.93</strong>
   </div>
-  <div class="eval-profile-row">
-    <span>Actionability</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 90%;"></div></div>
-    <strong>1.80 / 2</strong>
+  <div class="eval-comparison-row">
+    <span>Evidence quality</span>
+    <div class="eval-comparison-track" aria-label="Evidence quality: Round 1 1.28, Round 2 1.60, final held-out 1.87 out of 2">
+      <i class="eval-dot round-one" style="--x: 64%;"></i><i class="eval-dot round-two" style="--x: 80%;"></i><i class="eval-dot final-round" style="--x: 93.3%;"></i>
+    </div>
+    <strong>1.28 · 1.60 · 1.87</strong>
   </div>
-  <div class="eval-profile-row">
+  <div class="eval-comparison-row">
     <span>Uncertainty calibration</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill" style="--w: 86%;"></div></div>
-    <strong>1.72 / 2</strong>
+    <div class="eval-comparison-track" aria-label="Uncertainty calibration: Round 1 1.52, Round 2 1.72, final held-out 1.93 out of 2">
+      <i class="eval-dot round-one" style="--x: 76%;"></i><i class="eval-dot round-two" style="--x: 86%;"></i><i class="eval-dot final-round" style="--x: 96.7%;"></i>
+    </div>
+    <strong>1.52 · 1.72 · 1.93</strong>
   </div>
-  <div class="eval-profile-row">
-    <span>Answer correctness</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill mid" style="--w: 78%;"></div></div>
-    <strong>1.56 / 2</strong>
+  <div class="eval-comparison-row">
+    <span>Actionability</span>
+    <div class="eval-comparison-track" aria-label="Actionability: Round 1 1.64, Round 2 1.80, final held-out 1.83 out of 2">
+      <i class="eval-dot round-one" style="--x: 82%;"></i><i class="eval-dot round-two" style="--x: 90%;"></i><i class="eval-dot final-round" style="--x: 91.7%;"></i>
+    </div>
+    <strong>1.64 · 1.80 · 1.83</strong>
   </div>
-  <div class="eval-profile-row">
-    <span>Citation quality</span>
-    <div class="eval-profile-track"><div class="eval-profile-fill mid" style="--w: 80%;"></div></div>
-    <strong>1.60 / 2</strong>
+  <div class="eval-comparison-row">
+    <span>Role boundaries</span>
+    <div class="eval-comparison-track" aria-label="Role boundaries: Round 1 1.84, Round 2 2.00, final held-out 2.00 out of 2">
+      <i class="eval-dot round-one" style="--x: 92%;"></i><i class="eval-dot round-two" style="--x: 100%;"></i><i class="eval-dot final-round" style="--x: 100%;"></i>
+    </div>
+    <strong>1.84 · 2.00 · 2.00</strong>
   </div>
-  <p class="eval-profile-caption">Average score for each rubric dimension across 25 questions, using a 0-2 scale.</p>
+  <div class="eval-comparison-row">
+    <span>Clarity</span>
+    <div class="eval-comparison-track" aria-label="Clarity: Round 1 1.72, Round 2 1.84, final held-out 1.90 out of 2">
+      <i class="eval-dot round-one" style="--x: 86%;"></i><i class="eval-dot round-two" style="--x: 92%;"></i><i class="eval-dot final-round" style="--x: 95%;"></i>
+    </div>
+    <strong>1.72 · 1.84 · 1.90</strong>
+  </div>
+  <p class="eval-profile-caption">Average scores on a 0-2 scale. Rounds 1 and 2 evaluated different system versions on the same 25-question diagnostic set. The final system was evaluated on a separate set of 30 held-out questions; it was not manually rescored on the development set.</p>
 </div>
 
 
@@ -326,13 +323,13 @@ On the original 25-question diagnostic set, performance improved from **13 to 17
 
 ## Summary & next steps
 
-What can we take away from this project? In AI-mediated advising, a helpful answer is not enough. The assistant also needs to show where the answer comes from, acknowledge uncertainty, and guide students toward the right human support when the handbook is ambiguous. Moving forward, I plan to focus on three areas:
+What can we take away from this project? In high-stakes advising, a helpful answer is not enough. The system must retrieve the right evidence, communicate uncertainty, and maintain clear boundaries around what still requires human judgment. Through repeated evaluation and redesign, the project progressed from an initial chatbot prototype to a validated single-question assistant with strong performance on held-out cases.
 
-**Further improve retrieval and evidence-grounding:** The next iteration will continue to help the system find more relevant handbook sections. I will re-run the evaluation workflow after implementing the proposed changes.
+**Gather student feedback:** Study whether students find the answers, citations, and escalation guidance useful in realistic advising situations.
 
-**Gather more student feedback:** I am deploying the product with current PhD students at different program stages and asking them to test it with more questions, helping ensure the assistant is reliable in real use settings.
+**Collaborate with department administration:** Work with USC Psychology administrative staff to review policy interpretations and explore broader student use after further validation.
 
-**Collaborate with department administration:** After further validation and refinement, I will work with USC Psychology administrative staff to explore whether the tool could reduce repetitive first-pass advising questions, reducing friction for students and lowering repetitive advising workload for staff.
+**Explore future interactions:** Treat conversational follow-up and memory features as a new project phase with a separate test set and evaluation framework.
 
 ## Resources
 
