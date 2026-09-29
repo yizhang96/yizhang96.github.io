@@ -4,7 +4,7 @@ title: About me
 nav_order: 1
 ---
 
-Hi! I’m Yi Zhang, a Ph.D. candidate in Psychology at USC, advised by [Leor Hackel](https://www.hackellab.org). My research studies how people form **meaningful social connections** (e.g., empathy), and how they maintain connection in emotionally challenging situations (e.g., disagreements). I study these questions using behavioral research, network analysis, and natural language processing.
+Hi! I’m Yi Zhang, a Ph.D. candidate in Psychology at USC, advised by [Leor Hackel](https://www.hackellab.org). My research studies how people form **meaningful social connections** (e.g., empathy), and how they maintain connection in emotionally challenging situations (e.g., disagreements). I study these questions using behavioral research, network analysis, and natural language processing. You can explore [my research journey](https://research-journey-chi.vercel.app/) through this interactive webpage.
 
 Alongside my academic work, I am passionate about **human-centered design and technology**. In past internships and ongoing projects, I've worked on translating behavioral science into digital wellbeing products and interventions that help people make better decisions, manage emotions, and connect with others.
 
