@@ -4,7 +4,7 @@ title: About me
 nav_order: 1
 ---
 
-Hi! I’m Yi Zhang, a Ph.D. candidate in Psychology at USC, advised by [Leor Hackel](https://www.hackellab.org). My research studies how people understand others and form connections in emotionally challenging situations (e.g., disagreements). I study these questions using behavioral research, network analysis, and natural language processing. You can explore my research journe through this [interactive webpage](https://research-journey-chi.vercel.app/) .
+Hi! I’m Yi Zhang, a Ph.D. candidate in Psychology at USC, advised by [Leor Hackel](https://www.hackellab.org). My research studies how people understand others and form connections in emotionally challenging situations (e.g., disagreements). I study these questions using behavioral research, network analysis, and natural language processing. You can explore my research journey through this [interactive webpage](https://research-journey-chi.vercel.app/).
 
 I am also passionate about **human-centered design and technology**. In past internships and ongoing projects, I've worked on translating behavioral science into digital wellbeing products and interventions that help people make better decisions, manage emotions, and connect with others.
 
