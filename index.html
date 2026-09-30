@@ -3,21 +3,12 @@ layout: default
 title: About me
 ---
 
+{% assign about_page = site.pages | where: "path", "about.md" | first %}
+
 <div class="page">
 
   <h1 class="page-title">About me</h1>
 
-  <p>Hi! I’m Yi Zhang, a Ph.D. candidate in Psychology at USC, advised by <a href="https://www.hackellab.org">Leor Hackel</a>. 
-  My research studies how people form <strong>meaningful social connections</strong> (e.g., empathy), and how they maintain connection in emotionally challenging situations (e.g., disagreements). 
-  I study these questions using behavioral research, network analysis, and natural language processing.</p>
-
-  <p>Alongside my academic work, I am passionate about <strong>human-centered design and technology</strong>. 
-  In past internships and ongoing projects, I've worked on translating behavioral science into digital wellbeing products and interventions that help people make better decisions, manage emotions, and connect with others.</p>
-
-  <p>Outside research, I write and translate science communication pieces for <a href="https://neu-reality.com">Neureality (神经现实)</a>, including articles on 
-  <a href="https://medium.com/@yzhang51/reimagining-empathy-in-the-era-of-ai-fde1117bec12">social connection, empathy, and AI</a>.</p>
-
-  <h3>You can find my <a href="/Yi%20Zhang_CV.pdf">CV</a> here.</h3>
-  <h3>Feel free to reach out. My email is <a href="mailto:yzhang51@usc.edu">yzhang51@usc.edu</a>.</h3>
+  {{ about_page.content | markdownify }}
 
 </div>
